@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="images/favicon.ico" type="image/ico" />
 
-    <title>Asiha MLM | Admin Dashboard</title>
+    <title>Asiha MLM | Member Dashboard</title>
     {{-- <link rel="icon" href="{{ asset('logo/logo.png')}}" type="image/icon type"> --}}
 
 
@@ -70,7 +70,7 @@
                 <img src="images/img.jpg" alt="..." class="img-circle profile_img">
               </div> --}}
               <div class="profile_info">
-                <span>Welcome, <b>{{ Auth::guard('admin')->user()->name }}</b></span>
+                <span>Welcome, <b>{{ Auth::guard('member')->user()->name }}</b></span>
                 
               </div>
             </div>
@@ -83,18 +83,18 @@
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li><a href="{{ route('admin.deshboard')}}"><i class="fa fa-home"></i> Home </span></a>
+                  <li><a href="{{ route('member.dashboard')}}"><i class="fa fa-home"></i> Home </span></a>
                   </li>
-                  <li><a href="{{ route('admin.users')}}"><i class="fa fa-users" aria-hidden="true"></i> Users </span></a>
+                  <li><a href="{{route('member.register')}}"><i class="fa fa-user-plus"></i> Member Registration</a>
                   </li>
-                  <li><a href="{{ route('admin.orders')}}"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Orders </span></a>
-                  </li>
-                  <li><a><i class="fa fa-gear"></i> Configuration <span class="fa fa-chevron-down"></span></a>
+                
+                  <li><a><i class="fa fa-code-fork"></i>My Downline <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="{{route('admin.commission')}}">Commission</a></li>
+                      <li><a href="{{route('member.tree')}}"> My Tree</a></li>
+                      <li><a href="{{route('member.downline')}}"> Downline List</a></li>
                     </ul>
                   </li>
-                  <li><a href="{{route('admin.change_password_form')}}"><i class="fa fa-key" aria-hidden="true"></i>Change Password</a></li>
+                  <li><a href="{{route('member.change_password_form')}}"><i class="fa fa-key" aria-hidden="true"></i>Change Password</a></li>
 
                 </ul>
               </div>
@@ -131,7 +131,7 @@
 
               <ul class="nav navbar-nav navbar-right">
                 <li><a href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
-             <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
+             <form id="logout-form" action="{{ route('member.logout') }}" method="POST" style="display: none;">
                   @csrf
               </form>
               </ul>
