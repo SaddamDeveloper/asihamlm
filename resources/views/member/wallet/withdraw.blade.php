@@ -8,7 +8,7 @@
     <div class="col-md-12">
       <div class="x_panel">
         <div class="x_title">
-            <h2>Tree</h2>
+            <h2>Withdraw Request</h2>
             <div class="clearfix"></div>
         </div>
         <div>

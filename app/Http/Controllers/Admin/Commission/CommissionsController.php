@@ -10,6 +10,7 @@ use Carbon\Carbon;
 
 class CommissionsController extends Controller
 {
+    
     public function index(){
         $commission = Commission::value('commission');
         return view('admin.commission.index', compact('commission'));

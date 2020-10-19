@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Project Title</title>
+    <title>Asiha MLM | Admin Login</title>
     {{-- <link rel="icon" href="{{ asset('/logo/logo.png')}}" type="image/icon type"> --}}
 
     <!-- Bootstrap -->
@@ -72,7 +72,7 @@
 
                 <div>
                   <h1>
-                    Project Name
+                    Asiha MLM
                     {{-- <img src="{{ asset('logo/logo.png')}}" height="150"> --}}
                   </h1>
                   <p>©2016 All Rights Reserved.</p>

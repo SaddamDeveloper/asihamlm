@@ -89,9 +89,17 @@
                   </li>
                   <li><a href="{{ route('admin.orders')}}"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Orders </span></a>
                   </li>
+                  <li><a><i class="fa fa-edit"></i> Member Product <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{route('admin.product')}}">Product List</a></li>
+                    </ul>
+                  </li>
                   <li><a><i class="fa fa-gear"></i> Configuration <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="{{route('admin.commission')}}">Commission</a></li>
+                      <li><a href="{{route('admin.fund')}}">Add Fund</a></li>
+                      <li><a href="{{route('admin.pair_timing')}}">Pair timing</a></li>
+                      {{-- <li><a href="{{route('admin.pair_cutoff')}}">Common Pair CutOFF</a></li> --}}
                     </ul>
                   </li>
                   <li><a href="{{route('admin.change_password_form')}}"><i class="fa fa-key" aria-hidden="true"></i>Change Password</a></li>

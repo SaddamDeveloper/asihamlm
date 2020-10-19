@@ -48,6 +48,8 @@
 
     <!-- Custom Theme Style -->
     <link href="{{asset('admin/build/css/custom.min.css')}}" rel="stylesheet">
+    <link href="{{asset('admin/build/css/tree.css')}}" rel="stylesheet">
+    @yield('css')
   </head>
 
   <body class="nav-md">
@@ -93,6 +95,15 @@
                       <li><a href="{{route('member.tree')}}"> My Tree</a></li>
                       <li><a href="{{route('member.downline')}}"> Downline List</a></li>
                     </ul>
+                  </li>
+                  <li><a><i class="fa fa-credit-card"></i>Wallet <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{route('member.wallet')}}"> Wallet History</a></li>
+                      <li><a href="{{route('member.wallet_balance')}}">Add Wallet Balance</a></li>
+                      <li><a href="{{route('member.withdraw')}}">Withdraw Request</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="{{route('member.commission')}}"><i class="fa fa-percent"></i> Commission History</a>
                   </li>
                   <li><a href="{{route('member.change_password_form')}}"><i class="fa fa-key" aria-hidden="true"></i>Change Password</a></li>
 
