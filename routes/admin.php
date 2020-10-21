@@ -68,6 +68,11 @@ Route::group(['namespace' => 'Admin'],function(){
             Route::post('/add/pair/timing', 'PairTimingController@store')->name('admin.add_pair_timing');
         });
 
-
+        // WithDraw
+        Route::group(['namespace' => 'Withdraw'], function(){
+            Route::get('/withdraw/request', 'WithDrawController@index')->name('admin.withdraw');
+            Route::get('/withdraw/list', 'WithDrawController@list')->name('admin.ajax.withdraw');
+            Route::get('/withdraw/status/{id}/{status}', 'WithDrawController@status')->name('admin.withdraw_status');
+        });
     });
 });

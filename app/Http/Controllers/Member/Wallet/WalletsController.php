@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\WalletHistory;
 use App\Models\Wallet;
 use App\Models\Withdraw;
+use App\Models\WithdrawRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -42,7 +43,7 @@ class WalletsController extends Controller
 
     public function withdrawAmount(Request $request){
         $wallet = Wallet::find(Auth::guard('member')->user()->id);
-        if($request->input('amount') <= 100 && $request->input('amount') <= $wallet->amount){
+        if($wallet->amount >= $request->input('amount') && $wallet->amount > 100){
             $this->validate($request, [
                 'amount'   => 'required|numeric'
             ]);
@@ -66,13 +67,20 @@ class WalletsController extends Controller
                     $wallet_history->total_amount = $wallet->amount;
                     $wallet_history->comment = 'Rs '.number_format($amount, 2).' has been requested to withdraw.';
                     $wallet_history->save();
+
+                    // Withdraw requests to Admin
+                    $withdraw_request = new WithdrawRequest();
+                    $withdraw_request->wallet_id = $wallet->id;
+                    $withdraw_request->user_id = $id;
+                    $withdraw_request->amount = $amount;
+                    $withdraw_request->save();
                 });
                 return redirect()->back()->with('message', 'Payment Request has bee successfully sent! It will confirm within 7 days');
             } catch (\Exception $e) {
                 return redirect()->back()->with('error', 'Something went wrong!');
             }
         }else {
-            return redirect()->back()->with('error', 'Insufficent Balance! Need Rs 100 minimum balace to withdraw');
+            return redirect()->back()->with('error', 'Insufficent Balance!');
         }
     }
 

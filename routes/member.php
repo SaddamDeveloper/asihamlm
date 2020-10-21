@@ -48,7 +48,6 @@ Route::group(['namespace' => 'Member', 'prefix' => 'member'],function(){
             Route::get('/wallet/balance', 'WalletsController@walletBalance')->name('member.wallet_balance');
             Route::get('/withdraw', 'WalletsController@withdraw')->name('member.withdraw');
             Route::post('/withdraw/amount', 'WalletsController@withdrawAmount')->name('member.withdraw.amount');
-            Route::get('/withdraw/list', 'WalletsController@withdrawList')->name('member.ajax.withdraw');
         });
 
         // Commission

@@ -37,7 +37,6 @@
                         {{ Form::submit('Withdraw', array('class'=>'btn btn-success pull-right')) }}  
                     </div>
                 {{ Form::close() }}
-                <br>
             </div>
         </div>
         </div>
