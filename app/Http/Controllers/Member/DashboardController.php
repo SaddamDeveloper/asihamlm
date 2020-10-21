@@ -30,6 +30,7 @@ class DashboardController extends Controller
             $downline_member = Member::find($row->user_id);
             return $downline_member;
         });
-        return view('member.dashboard', compact('commission', 'tree', 'downline_member', 'member'));
+        $direct_member = Tree::where('registered_by', $member->id)->count();
+        return view('member.dashboard', compact('commission', 'tree', 'downline_member', 'member', 'direct_member'));
     }
 }
