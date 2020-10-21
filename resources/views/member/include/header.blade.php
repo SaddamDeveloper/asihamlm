@@ -101,7 +101,6 @@
                   <li><a><i class="fa fa-credit-card"></i>Wallet <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="{{route('member.wallet')}}"> Wallet History</a></li>
-                      <li><a href="{{route('member.wallet_balance')}}">Add Wallet Balance</a></li>
                       <li><a href="{{route('member.withdraw')}}">Withdraw Request</a></li>
                     </ul>
                   </li>

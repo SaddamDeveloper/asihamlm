@@ -40,6 +40,7 @@ Route::group(['namespace' => 'Admin'],function(){
             Route::post('/store/product', 'ProductController@store')->name('admin.store_product');
             Route::get('/list/product', 'ProductController@show')->name('admin.ajax.product_list');
             Route::get('/edit/product/{id}', 'ProductController@edit')->name('admin.edit.product');
+            Route::post('/update/product/', 'ProductController@update')->name('admin.update_product');
             Route::get('/delete/product/{id}','ProductController@destroy')->name('admin.delete.product');
         });
 

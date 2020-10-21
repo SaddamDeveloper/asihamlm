@@ -75,7 +75,55 @@ class ProductController extends Controller
         }
 
         $product = Product::find($id);
-        return view('admin.products.edit', compact('product'));
+        return view('admin.product.edit', compact('product'));
+    }
+
+    public function update(Request $request){
+        $this->validate($request, [
+            'name' => 'required',
+        ]); 
+        $id = $request->input('id');
+        if($request->hasfile('image')){
+            $this->validate($request, [
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                ]);
+            $image = $request->file('image');
+            $image_name = $this->imageInsert($image, $request, 1);
+           
+            // Check wheather image is in DB
+            $product = Product::find($id);
+            if($product->image){
+                //Delete
+                $image_path_thumb = "/product/thumb/".$product->image;  
+                $image_path_original = "/product/".$product->image;  
+                if(File::exists($image_path_thumb)) {
+                    File::delete($image_path_thumb);
+                }
+                if(File::exists($image_path_original)){
+                    File::delete($image_path_original);
+                }
+
+                //Update
+                $product->image = $image_name;
+                if($product->save()){
+                    return redirect()->back()->with('message','Product Updated Successfully!');
+                }
+            }else{
+                $product->image = $image_name;
+                if($product->save()){
+                    return redirect()->back()->with('message','Product Updated Successfully!');
+                }
+            }
+        }
+
+        $product = Product::find($id);
+        $product->name = $request->input('name');
+        $product->price = $request->input('price');
+        if($product->save()){
+            return redirect()->back()->with('message', 'Product Updated Successfully!');
+        }else {
+            return redirect()->back()->with('error','Something went wrong!');
+        }
     }
 
     public function destroy($id){
