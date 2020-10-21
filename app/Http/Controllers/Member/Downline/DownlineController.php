@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Member\Downline;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use DB;
 use Carbon\Carbon;
-use Auth;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
 class DownlineController extends Controller
 {
     public function index(){
@@ -74,7 +75,7 @@ class DownlineController extends Controller
                    if ($row->user_id == $lft_details->u_id) {
                         $lft_member.=" (Self)";
                     }else{
-                        $lft_member.=" (".$lft_details->u_name.") <button class='btn btn-success'>VIEW</button>";
+                        $lft_member.=" (".$lft_details->u_name.")";
                    }
                    return $lft_member;
                 }
@@ -92,7 +93,7 @@ class DownlineController extends Controller
                    if ($row->user_id == $rht_details->u_id) {
                         $rht_member.=" (Self)";
                     }else{
-                        $rht_member.=" (".$rht_details->u_name.") <button class='btn btn-success'>VIEW</button>";
+                        $rht_member.=" (".$rht_details->u_name.")";
                     }
                     return $rht_member;
                 }
