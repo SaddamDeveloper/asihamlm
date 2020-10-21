@@ -10,19 +10,21 @@ use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Support\Facades\Session;
 use App\Models\Product;
 use App\Models\Wallet;
-use Auth;
 use App\Models\TempMember;
 use Carbon\Carbon;
-use DB;
 use App\Models\WalletHistory;
 use App\Models\Order;
-use Hash;
 use App\Models\PairTiming;
 use App\Models\MemberPairTiming;
 use App\Models\AdminWallet;
 use App\Models\AdminWalletHistory;
 use App\Models\CommissionHistory;
 use App\Models\Commission;
+use Exception;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+
 class RegistrationController extends Controller
 {
     public function index(){

@@ -40,12 +40,15 @@ Route::group(['namespace' => 'Member', 'prefix' => 'member'],function(){
             // Route::get('/tree', 'TreeController@index')->name('member.tree');
             Route::get('/my/tree/{rank?}/{user_id?}', 'TreeController@memberTree')->name('member.tree');
         });
+
         // Wallet
         Route::group(['namespace' => 'Wallet'], function () {
             Route::get('/wallet', 'WalletsController@index')->name('member.wallet');
             Route::get('/wallet/data', 'WalletsController@walletList')->name('member.ajax.wallet');
             Route::get('/wallet/balance', 'WalletsController@walletBalance')->name('member.wallet_balance');
             Route::get('/withdraw', 'WalletsController@withdraw')->name('member.withdraw');
+            Route::post('/withdraw/amount', 'WalletsController@withdrawAmount')->name('member.withdraw.amount');
+            Route::get('/withdraw/list', 'WalletsController@withdrawList')->name('member.ajax.withdraw');
         });
 
         // Commission
@@ -59,6 +62,5 @@ Route::group(['namespace' => 'Member', 'prefix' => 'member'],function(){
             Route::get('/order', 'OrderController@index')->name('member.orders');
             Route::get('/order/list', 'OrderController@ordersList')->name('member.ajax.orders');
         });
-
     });
 });
