@@ -48,6 +48,7 @@
 
     <!-- Custom Theme Style -->
     <link href="{{asset('admin/build/css/custom.min.css')}}" rel="stylesheet">
+    @yield('link')
   </head>
 
   <body class="nav-md">
@@ -85,7 +86,10 @@
                 <ul class="nav side-menu">
                   <li><a href="{{ route('admin.deshboard')}}"><i class="fa fa-home"></i> Home </span></a>
                   </li>
-                  <li><a href="{{ route('admin.users')}}"><i class="fa fa-users" aria-hidden="true"></i> Users </span></a>
+                  <li><a><i class="fa fa-users" aria-hidden="true"></i> Members<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{route('admin.members')}}">Member List</a></li>
+                    </ul>
                   </li>
                   <li><a href="{{ route('admin.orders')}}"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Orders </span></a>
                   </li>

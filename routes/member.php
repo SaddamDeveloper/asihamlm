@@ -8,10 +8,16 @@ Route::group(['namespace' => 'Member', 'prefix' => 'member'],function(){
     Route::post('logout', 'LoginController@logout')->name('member.logout');
 
     Route::group(['middleware'=>'auth:member'],function(){
-        Route::get('/dashboard', 'DashboardController@dashboardView')->name('member.dashboard');
         Route::get('/change/password/form', 'LoginController@changePasswordForm')->name('member.change_password_form');
         Route::post('/change/password', 'LoginController@changePassword')->name('member.change_password');
-
+        
+        Route::get('/dashboard', 'DashboardController@dashboardView')->name('member.dashboard');
+        Route::group(['namespace' => 'Profile'], function () {
+            Route::get('/profile', 'ProfileController@index')->name('member.profile');
+            Route::get('/account/update', 'ProfileController@accountUpdate')->name('member.account_update');
+            Route::post('/member/update', 'ProfileController@memberUpdate')->name('member.update_member');
+        });
+        
         // Registration
         Route::group(['namespace' => 'Registration'], function (){
             Route::get('/register', 'RegistrationController@index')->name('member.register');
@@ -46,6 +52,12 @@ Route::group(['namespace' => 'Member', 'prefix' => 'member'],function(){
         Route::group(['namespace' => 'Commission'], function () {
             Route::get('/commission', 'CommissionsController@index')->name('member.commission');
             Route::get('/commission/list', 'CommissionsController@commission')->name('member.ajax.commission');
+        });
+
+        // Order
+        Route::group(['namespace' => 'Order'], function () {
+            Route::get('/order', 'OrderController@index')->name('member.orders');
+            Route::get('/order/list', 'OrderController@ordersList')->name('member.ajax.orders');
         });
 
     });

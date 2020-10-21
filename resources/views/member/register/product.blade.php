@@ -80,28 +80,28 @@
                                             <p>{{__('Start your business to buy any one package')}}</p>
                                         </div>
                                         @if (count($products) > 0)
-                                        <div class="productcontent">
-                                            <div class="row">
-                                                @foreach ($products as $product)
-                                                <div class="col-md-4 singleproduct">
-                                                    <label>
-                                                        <input type="radio" name="product_id" value="{{$product->id}}" checked>
-                                                        <input type="hidden" name="id" value="{{ $temp_member->id }}">
-                                                        <h5>{{$product->name}}</h5> 
-                                                        <img src="{{asset('/product/thumb/'.$product->image)}}" name="image" alt="" class="fstchld">
-                                                        <h5>
-                                                            ₹ {{number_format($product->price, 2)}}
-                                                        </h5>
-                                                    </label>
-                                                    @if ($errors->has('product'))
-                                                        <span class="help-block">
-                                                            <strong>{{ $errors->first('product') }}</strong>
-                                                        </span>
-                                                    @endif
+                                            <div class="productcontent">
+                                                <div class="row">
+                                                    @foreach ($products as $product)
+                                                    <div class="col-md-4 singleproduct">
+                                                        <label>
+                                                            <input type="radio" name="product_id" value="{{$product->id}}" checked>
+                                                            <input type="hidden" name="id" value="{{ $temp_member->id }}">
+                                                            <h5>{{$product->name}}</h5> 
+                                                            <img src="{{asset('/product/thumb/'.$product->image)}}" name="image" alt="" class="fstchld">
+                                                            <h5>
+                                                                ₹ {{number_format($product->price, 2)}}
+                                                            </h5>
+                                                        </label>
+                                                        @if ($errors->has('product'))
+                                                            <span class="help-block">
+                                                                <strong>{{ $errors->first('product') }}</strong>
+                                                            </span>
+                                                        @endif
+                                                    </div>
+                                                    @endforeach
                                                 </div>
-                                                @endforeach
                                             </div>
-                                        </div>
                                         @else
                                         <div class="productcontent">
                                             <div class="row">

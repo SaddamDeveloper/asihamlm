@@ -19,7 +19,7 @@
                   <th>Sl. No</th>
                   <th>Name</th>
                   <th>Product</th>
-                  {{-- <th>Photo</th> --}}
+                  <th>Photo</th>
                   <th>Amount</th>
                   <th>Created At</th>
                 </tr>
@@ -37,20 +37,21 @@
  @section('script')
     <script type="text/javascript">
         $(function () {
-        var table = $('#order_list').DataTable({
-            processing: true,
-            serverSide: true,
-            iDisplayLength: 50,
-            ajax: "{{ route('admin.ajax.orders') }}",
-            columns: [
-                {data: 'id', name: 'id',searchable: true},
-                {data: 'name', name: 'name',searchable: true},
-                {data: 'product', name: 'product' ,searchable: true}, 
-                // {data: 'product_image', name: 'product_image' ,searchable: true}, 
-                {data: 'amount', name: 'amount' ,searchable: true}, 
-                {data: 'created_at', name: 'created_at' ,searchable: true},                 
-            ]
-        });
+            var i = 1;
+            var table = $('#order_list').DataTable({
+                processing: true,
+                serverSide: true,
+                iDisplayLength: 50,
+                ajax: "{{ route('admin.ajax.orders') }}",
+                columns: [
+                    { "render": function(data, type, full, meta) {return i++;}},
+                    {data: 'full_name', name: 'full_name',searchable: true},
+                    {data: 'product', name: 'product' ,searchable: true}, 
+                    {data: 'product_image', name: 'product_image' ,searchable: true}, 
+                    {data: 'amount', name: 'amount' ,searchable: true}, 
+                    {data: 'created_at', name: 'created_at' ,searchable: true},                 
+                ]
+            });
         
     });
     </script>

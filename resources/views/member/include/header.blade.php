@@ -48,7 +48,8 @@
 
     <!-- Custom Theme Style -->
     <link href="{{asset('admin/build/css/custom.min.css')}}" rel="stylesheet">
-    <link href="{{asset('admin/build/css/tree.css')}}" rel="stylesheet">
+    {{-- <link href="{{asset('admin/build/css/tree.css')}}" rel="stylesheet"> --}}
+    @yield('link')
     @yield('css')
   </head>
 
@@ -96,6 +97,7 @@
                       <li><a href="{{route('member.downline')}}"> Downline List</a></li>
                     </ul>
                   </li>
+                  <li><a href="{{ route('member.orders')}}"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Orders </span></a>
                   <li><a><i class="fa fa-credit-card"></i>Wallet <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="{{route('member.wallet')}}"> Wallet History</a></li>
@@ -139,13 +141,41 @@
               <div class="nav toggle">
                 <a id="menu_toggle"><i class="fa fa-bars"></i></a>
               </div>
-
               <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <img src="{{Auth::guard('member')->user()->photo == NULL ? asset('/images/user.png') : asset('images/'.Auth::guard('member')->user()->photo)}}" alt="">{{Auth::guard('member')->user()->name}}
+                    <span class=" fa fa-angle-down"></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-usermenu pull-right">
+                    <li>
+                      <a href="{{ route('member.profile') }}" class="fa fa-user"> Profile</a>
+                    </li>
+                    <li>
+                      <a href="{{route('member.change_password_form')}}" class="fa fa-key">
+                        Change Password
+                      </a>
+                    </li>
+                    <div class="devider">
+      
+                    </div>
+                    <li>
+                      <a href="{{ route('member.logout') }}" class="fa fa-sign-out pull-right" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
+                          Logout
+                      </a>     
+                      <form id="frm-logout" action="{{ route('member.logout') }}" method="POST" style="display: none;">
+                          {{ csrf_field() }}
+                      </form>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+              {{-- <ul class="nav navbar-nav navbar-right">
                 <li><a href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
              <form id="logout-form" action="{{ route('member.logout') }}" method="POST" style="display: none;">
                   @csrf
               </form>
-              </ul>
+              </ul> --}}
             </nav>
           </div>
         </div>

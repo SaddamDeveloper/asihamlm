@@ -1,7 +1,8 @@
-@extends('member.template.admin_master')
+@extends('admin.template.admin_master')
 @section('link')
   <link href="{{asset('admin/build/css/tree.css')}}" rel="stylesheet">
 @endsection
+
 @section('content')
 
 <!-- page content -->
@@ -11,6 +12,7 @@
             <div class="x_panel">
                 <div class="x_title">
                     <h2>Tree</h2>
+                    <button class="btn btn-danger pull-right" onclick="javascript:window.close()"><i class="fa fa-close"></i></button>
                     <div class="clearfix"></div>
                 </div>
                 <div>

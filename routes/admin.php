@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 Route::group(['namespace' => 'Admin'],function(){
     Route::get('/admin/login','LoginController@showLoginForm')->name('admin.login');    
     Route::post('login', 'LoginController@adminLogin');
@@ -11,8 +13,18 @@ Route::group(['namespace' => 'Admin'],function(){
         Route::post('/change/password', 'LoginController@changePassword')->name('admin.change_password');
         
         // Users
-        Route::group(['namespace' => 'User'], function () {
-            Route::get('/users', 'UsersController@index')->name('admin.users');
+        Route::group(['namespace' => 'Member'], function () {
+            Route::get('/members', 'MemberController@index')->name('admin.members');
+            Route::get('/member/list', 'MemberController@memberList')->name('admin.ajax.member_list');
+            Route::get('/view/member/{id}', 'MemberController@memberView')->name('admin.member_view');
+            Route::get('/edit/member/{id}', 'MemberController@memberEdit')->name('admin.member_edit');
+            Route::post('/edit/member/', 'MemberController@memberUpdate')->name('admin.update_member');
+            Route::get('/downline/member/{id}', 'MemberController@memberDownline')->name('admin.member_downline');
+            Route::get('/member/tree/{rank?}/{user_id?}', 'MemberController@memberTree')->name('admin.member.tree');
+            Route::get('/downline/member/list/{id}', 'MemberController@memberDownlineList')->name('admin.ajax.downline_list');
+            Route::get('/change/member/password/{id}', 'MemberController@changeMemberPassword')->name('admin.member.change_password');
+            Route::post('/update/member/password', 'MemberController@updateMemberPassword')->name('admin.update_member_password');
+            Route::get('/status/member/{id}/{status}', 'MemberController@memberStatus')->name('admin.member_status');
         });
 
         // Orders
@@ -27,6 +39,8 @@ Route::group(['namespace' => 'Admin'],function(){
             Route::get('/add/product', 'ProductController@add')->name('admin.add.product');
             Route::post('/store/product', 'ProductController@store')->name('admin.store_product');
             Route::get('/list/product', 'ProductController@show')->name('admin.ajax.product_list');
+            Route::get('/edit/product/{id}', 'ProductController@edit')->name('admin.edit.product');
+            Route::get('/delete/product/{id}','ProductController@destroy')->name('admin.delete.product');
         });
 
         // Commission Set

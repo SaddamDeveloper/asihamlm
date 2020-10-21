@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Intervention\Image\Facades\Image;
 use App\Models\Product;
+use Illuminate\Contracts\Encryption\DecryptException;
+use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
@@ -57,15 +59,45 @@ class ProductController extends Controller
                 return $image;
             })
             ->addColumn('action', function($row){
-                $action = '<a href="#" class="btn btn-info>Edit</a>
-                <a href="#" class="btn btn-primary>Delete</a>';
+                $action = '<a href="'.route('admin.edit.product', ['id' => encrypt($row->id)]).'" class="btn btn-info">Edit</a>
+                <a href="'.route('admin.delete.product', ['id' => encrypt($row->id)]).'" class="btn btn-danger">Delete</a>';
                 return $action;
             })
             ->rawColumns(['price', 'image', 'action'])
             ->make(true);
     }
+
+    public function edit($id){
+        try{
+            $id = decrypt($id);
+        }catch(DecryptException $e) {
+            abort(404);
+        }
+
+        $product = Product::find($id);
+        return view('admin.products.edit', compact('product'));
+    }
+
+    public function destroy($id){
+        try{
+            $id = decrypt($id);
+        }catch(DecryptException $e) {
+            abort(404);
+        }
+
+        $product = Product::find($id);
+        if($product->delete()){
+            if(File::exists(public_path().'product/'.$product->image)){
+                File::delete(public_path().'product/'.$product->image);
+                if(File::exists(public_path().'product/thumb/'.$product->image)){
+                    File::delete(public_path().'product/thumb/'.$product->image);
+                }
+            }
+            return redirect()->back()->with('message', 'Deleted Successfully!');
+        }
+    }
+
     // Manual Function
-    
     function imageInsert($image, Request $request, $flag){
         $destination = base_path().'/public/product/';
         $image_extension = $image->getClientOriginalExtension();

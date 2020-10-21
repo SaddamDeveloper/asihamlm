@@ -18,7 +18,7 @@
           <div>
               <div class="x_content">               
                 
-                {{ Form::open(['method' => 'post','route'=>'member.change_password'])}}                  
+                {{ Form::open(['method' => 'post','url'=>'/change/password'])}}                  
                     <div class="well" style="overflow: auto">
                       <center><h3>Change Password</h3></center>
                       <div class="form-row mb-10">

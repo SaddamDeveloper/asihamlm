@@ -14,11 +14,10 @@ class LoginController extends Controller
 
     public function memberLogin(Request $request){
         $this->validate($request, [
-            'email'   => 'required|email',
+            'login_id'   => 'required',
             'password' => 'required|min:6'
         ]);
-        if (Auth::guard('member')->attempt(['email' => $request->email, 'password' => $request->password])) {
-
+        if (Auth::guard('member')->attempt(['login_id' => $request->login_id, 'password' => $request->password])) {
             return redirect()->intended('/member/dashboard');
         }
         return back()->withInput($request->only('email', 'remember'))->with('login_error','Email or password is incorrect');

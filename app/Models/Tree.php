@@ -22,4 +22,9 @@ class Tree extends Model
     ];
 
     protected $primaryKey = 'id';
+
+    public function member()
+    {
+        return $this->belongsTo('App\Models\Member', 'user_id', 'id');
+    }
 }

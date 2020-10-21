@@ -36,25 +36,24 @@
               <h1>Member Login Form</h1>
               <div>
 
-                {{ Form::email('email', '',array('class' => 'form-control','placeholder'=>'Enter Email','required')) }}
+                {{ Form::text('login_id', '',array('class' => 'form-control','placeholder'=>'Enter Login ID','required')) }}
                 @if ($message = Session::get('login_error'))
                   <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
+                        <strong style="color:red">{{ $message }}</strong>
                     </span>
                 @endif
-                @error('email')
+                @error('login_id')
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
+                        <strong style="color:red">{{ $message }}</strong>
                     </span>
                 @enderror
-                {{-- <input type="text" class="form-control" placeholder="Username" required="" /> --}}
               </div>
               <div>
                 {{ Form::password('password',array('class' => 'form-control','placeholder'=>'Enter Passssword')) }}
                 
                 @error('password')
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
+                        <strong style="color:red">{{ $message }}</strong>
                     </span>
                 @enderror
               </div>
