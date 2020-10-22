@@ -35,8 +35,8 @@ class WebsiteController extends Controller
 
     public function product()
     {
-        $product = ShoppingProduct::where('section', 2)->orderBy('created_at', 'DESC')->paginate(4);
-        return view('web.product', compact('product'));
+        // $product = ShoppingProduct::where('section', 2)->orderBy('created_at', 'DESC')->paginate(4);
+        return view('web.product');
     }
     
     public function contact()
@@ -47,8 +47,10 @@ class WebsiteController extends Controller
 
     public function productList()
     {
-        $categories = ShoppingCategory::orderBy('created_at', 'DESC')->where('status', 1)->take(5)->get();
-        $products = ShoppingProduct::where('section', 1)->where('status', 1)->orderBy('created_at', 'DESC')->paginate(8);
+        // $categories = ShoppingCategory::orderBy('created_at', 'DESC')->where('status', 1)->take(5)->get();
+        // $products = ShoppingProduct::where('section', 1)->where('status', 1)->orderBy('created_at', 'DESC')->paginate(8);
+        $categories = null;
+        $products = null;
         return view('web.product.product-list', compact('products', 'categories'));
     }
     public function productDetail($id)
@@ -110,7 +112,8 @@ class WebsiteController extends Controller
     
     public function image()
     {
-        $gallery = Gallery::orderBy('created_at', 'DESC')->paginate(8);
+        // $gallery = Gallery::orderBy('created_at', 'DESC')->paginate(8);
+        $gallery = null;
         return view('web.gallery.image', compact('gallery'));
     }
 
@@ -132,7 +135,8 @@ class WebsiteController extends Controller
     }
     
     public function video() {
-        $video_gallery = VideoGallery::orderBy('created_at', 'DESC')->paginate(8);
+        // $video_gallery = VideoGallery::orderBy('created_at', 'DESC')->paginate(8);
+        $video_gallery = null;
         return view('web.gallery.video', compact('video_gallery'));
     }
 }

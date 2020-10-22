@@ -86,12 +86,12 @@
 
                             <!-- product item list wrapper start -->
                             <div class="shop-product-wrap grid-view row mbn-30">
-                                @if(isset($products) && !empty($products))
-                                    @foreach ($products as $product)
+                                {{-- @if(isset($products) && !empty($products))
+                                    @foreach ($products as $product) --}}
                                         <!-- product single item start -->
-                                        <div class="col-md-3 col-sm-6">
+                                        {{-- <div class="col-md-3 col-sm-6"> --}}
                                             <!-- product grid start -->
-                                            <div class="product-item">
+                                            {{-- <div class="product-item">
                                                 <figure class="product-thumb">
                                                     <a href="{{route('web.product.product-detail', ['id' => encrypt($product->id)])}}">
                                                         <img class="pri-img" src="{{asset('web/img/product/'.$product->main_image)}}" alt="product">
@@ -109,12 +109,90 @@
                                                         <span class="price-old"><del>₹{{ number_format($product->price, 2) }}</del></span>
                                                     </div>
                                                 </div>
+                                            </div> --}}
+                                            <!-- product grid end -->
+                                        {{-- </div> --}}
+                                        <!-- product single item start -->
+
+                                        <!-- product single item start -->
+                                        <div class="col-md-3 col-sm-6">
+                                            <!-- product grid start -->
+                                            <div class="product-item">
+                                                <figure class="product-thumb">
+                                                    <a href="">
+                                                        <img class="pri-img" src="{{asset('web/img/product/1.jpeg')}}" alt="product">
+                                                    </a>
+                                                    <div class="cart-hover">
+                                                        <a href="#" data-toggle="modal" data-target-id="" data-target="#quick_view"><span data-toggle="tooltip" data-placement="left" title="Quick View"><i class="pe-7s-search"></i></span></a>
+                                                    </div>
+                                                </figure>
+                                                <div class="product-caption text-center">
+                                                    <h6 class="product-name">
+                                                        <a href="">Product Name Here</a>
+                                                    </h6>
+                                                    <div class="price-box">
+                                                        <span class="price-old"><del>₹1499</del></span>
+                                                        <span class="price-regular">₹1299</span>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <!-- product grid end -->
                                         </div>
                                         <!-- product single item start -->
-                                    @endforeach
-                                @endif
+
+                                        <!-- product single item start -->
+                                        <div class="col-md-3 col-sm-6">
+                                            <!-- product grid start -->
+                                            <div class="product-item">
+                                                <figure class="product-thumb">
+                                                    <a href="">
+                                                        <img class="pri-img" src="{{asset('web/img/product/1.jpeg')}}" alt="product">
+                                                    </a>
+                                                    <div class="cart-hover">
+                                                        <a href="#" data-toggle="modal" data-target-id="" data-target="#quick_view"><span data-toggle="tooltip" data-placement="left" title="Quick View"><i class="pe-7s-search"></i></span></a>
+                                                    </div>
+                                                </figure>
+                                                <div class="product-caption text-center">
+                                                    <h6 class="product-name">
+                                                        <a href="">Product Name Here</a>
+                                                    </h6>
+                                                    <div class="price-box">
+                                                        <span class="price-old"><del>₹1499</del></span>
+                                                        <span class="price-regular">₹1299</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- product grid end -->
+                                        </div>
+                                        <!-- product single item start -->
+
+                                        <!-- product single item start -->
+                                        <div class="col-md-3 col-sm-6">
+                                            <!-- product grid start -->
+                                            <div class="product-item">
+                                                <figure class="product-thumb">
+                                                    <a href="">
+                                                        <img class="pri-img" src="{{asset('web/img/product/1.jpeg')}}" alt="product">
+                                                    </a>
+                                                    <div class="cart-hover">
+                                                        <a href="#" data-toggle="modal" data-target-id="" data-target="#quick_view"><span data-toggle="tooltip" data-placement="left" title="Quick View"><i class="pe-7s-search"></i></span></a>
+                                                    </div>
+                                                </figure>
+                                                <div class="product-caption text-center">
+                                                    <h6 class="product-name">
+                                                        <a href="">Product Name Here</a>
+                                                    </h6>
+                                                    <div class="price-box">
+                                                        <span class="price-old"><del>₹1499</del></span>
+                                                        <span class="price-regular">₹1299</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- product grid end -->
+                                        </div>
+                                        <!-- product single item start -->
+                                    {{-- @endforeach
+                                @endif --}}
 
                             </div>
                             <!-- product item list wrapper end -->
@@ -123,7 +201,7 @@
                             <div class="paginatoin-area text-center">
                                 <ul class="pagination-box">
                                    
-                                  {{ $products->links() }}
+                                  {{-- {{ $products->links() }} --}}
                                    
                                 </ul>
                             </div>

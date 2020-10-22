@@ -1,0 +1,84 @@
+.welcome-message p i {
+    color: #fff;
+    margin-right: 7px;
+    border: 1px solid #a9a9a9;
+    padding: 5px;    
+}
+.welcome-message p a {
+    color: #fff;    
+}
+.logo a img {
+    width: 70%;
+}
+.desktop-menu {
+    float: right;
+}
+.main-menu ul li a.main-tab {
+    font-size: 15px;
+    padding: 3px 10px;
+    border: 2px solid #fbb949;
+    margin-right: 10px;
+    border-radius: 20px;
+    background: #ffd389;
+    background-attachment: fixed;
+}
+.copyright-text p{
+    color: #aaa
+}
+.about-thumb {
+    padding: 20px;
+    border: 2px solid #fbb949;
+    border-radius: 20px;
+}
+.about-thumb img {
+    border-radius: 20px;
+}
+
+.footer-text p {
+    color: #aaa;
+}
+
+.about-block {
+    background-color: #fff;
+    margin-bottom: 20px;
+    border: 2px solid #fbb949;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 4px 3px #ffd389;
+}
+
+.product-area .slick-slider .slick-slide > div {
+    padding-top: 10px;
+}
+
+.contact-info i {
+    font-size: 30px;
+    border-right: 3px solid #fbb949;
+    padding: 30px 10px;
+    margin-bottom: 30px;
+    color: #000;
+    margin-right: 10px;
+}
+.contact-info .single-input-item:last-child i {
+    margin-bottom: 0px;
+}
+
+/* responsive */
+@media only screen and (min-width: 991px) {
+    body {
+        margin: 0 80px;
+        border-top: 3px solid #5affca;
+        background-image: url(https://pahe.ph/wp-content/themes/sahifa/images/patterns/body-bg41.png);
+        background-color: #ce9400;
+        background-attachment: fixed;
+    }
+    .header-main-area {
+        background-color: #fff;
+    }
+    .header-main-area.is-sticky{
+        display: none;
+    }
+    .hero-slider-content {
+        padding-left: 50px;
+    }
+}

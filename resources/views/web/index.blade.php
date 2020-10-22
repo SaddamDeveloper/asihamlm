@@ -7,20 +7,56 @@
 @section('content')
     
     <main style="background:url('web/img/patt.jpg')">
-        @if(isset($slider) && !empty($slider))
         <!-- hero slider area start -->
+        {{-- @if(isset($slider) && !empty($slider)) --}}
         <section class="slider-area">
             <div class="hero-slider-active slick-arrow-style slick-arrow-style_hero slick-dot-style">
                 {{-- @foreach ($slider as $sl) --}}
                 <!-- single slider item start -->
                 <div class="hero-single-slide hero-overlay">
-                    <div class="hero-slider-item bg-img" data-bg="" width="1350">
+                    <div class="hero-slider-item bg-img" data-bg="{{asset('web/img/slider/home1-slide1.jpg')}}" width="1350">
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="hero-slider-content slide-1">
-                                        <h2 class="slide-title">{{$sl->banner_title}}</h2>
-                                        <h4 class="slide-desc">{{$sl->banner_subtitle}}</h4>
+                                        <h2 class="slide-title">Ashia MLM</h2>
+                                        <h4 class="slide-desc">Healthy Life with Ashia</h4>
+                                        {{-- <h2 class="slide-title">{{$sl->banner_title}}</h2>
+                                        <h4 class="slide-desc">{{$sl->banner_subtitle}}</h4> --}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- single slider item start -->
+
+                <!-- single slider item start -->
+                <div class="hero-single-slide hero-overlay">
+                    <div class="hero-slider-item bg-img" data-bg="{{asset('web/img/slider/home1-slide4.jpg')}}" width="1350">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="hero-slider-content slide-1">
+                                        <h2 class="slide-title">Ashia MLM</h2>
+                                        <h4 class="slide-desc">Healthy Life with Ashia</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- single slider item start -->
+
+                <!-- single slider item start -->
+                <div class="hero-single-slide hero-overlay">
+                    <div class="hero-slider-item bg-img" data-bg="{{asset('web/img/slider/home1-slide2.jpg')}}" width="1350">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="hero-slider-content slide-1">
+                                        <h2 class="slide-title">Ashia MLM</h2>
+                                        <h4 class="slide-desc">Healthy Life with Ashia</h4>
                                     </div>
                                 </div>
                             </div>
@@ -31,10 +67,10 @@
                 {{-- @endforeach --}}
             </div>
         </section>
+        {{-- @endif --}}
         <!-- hero slider area end -->
-        @endif
 
-        @if(isset($product) && !empty($product))
+        {{-- @if(isset($product) && !empty($product)) --}}
         <!-- product area start -->
         <section class="product-area section-padding">
             <div class="container">
@@ -56,13 +92,13 @@
                             <div class="tab-content">
                                 <div class="tab-pane fade show active" id="tab1">
                                     <div class="product-carousel-4 slick-row-10 slick-arrow-style">
-                                        @foreach ($product as $pr)
+                                        {{-- @foreach ($product as $pr) --}}
                                         <!-- product item start -->
                                         <div class="product-item">
                                             <figure class="product-thumb">
-                                                <a href="{{ route('web.product.product-detail', ['id' => encrypt($pr->id)]) }}">
-                                                    <img class="pri-img" src="{{asset('web/img/product/'.$pr->main_image)}}" alt="product">
-                                                    <img class="sec-img" src="{{asset('web/img/product/'.$pr->main_image)}}" alt="product">
+                                                <a href="">
+                                                    <img class="pri-img" src="{{asset('web/img/product/1.jpeg')}}" alt="product">
+                                                    <img class="sec-img" src="{{asset('web/img/product/1.jpeg')}}" alt="product">
                                                 </a>
                                                 <div class="product-badge">
                                                     <div class="product-label new">
@@ -70,44 +106,22 @@
                                                     </div>
                                                 </div>
                                                 <div class="button-group">
-                                                    {{-- <a href="wishlist.html" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i class="pe-7s-like"></i></a> --}}
-                                                    {{-- <a href="compare.html" data-toggle="tooltip" data-placement="left" title="Add to Compare"><i class="pe-7s-refresh-2"></i></a> --}}
-                                                    <a href="#" data-toggle="modal" data-target-id="{{ $pr->id }}" data-target="#quick_view"><span data-toggle="tooltip" data-placement="left" title="Quick View"><i class="pe-7s-search"></i></span></a>
+                                                    <a href="#" data-toggle="modal" data-target-id="" data-target="#quick_view"><span data-toggle="tooltip" data-placement="left" title="Quick View"><i class="pe-7s-search"></i></span></a>
                                                 </div>
-                                                {{-- <div class="cart-hover">
-                                                    <button class="btn btn-cart">add to cart</button>
-                                                </div> --}}
                                             </figure>
                                             <div class="product-caption text-center">
-                                                <div class="product-identity">
-                                                    {{-- <p class="manufacturer-name"><a href="product-details.html">Gold</a></p> --}}
-                                                </div>
-                                                {{-- <ul class="color-categories">
-                                                    <li>
-                                                        <a class="c-lightblue" href="#" title="LightSteelblue"></a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="c-darktan" href="#" title="Darktan"></a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="c-grey" href="#" title="Grey"></a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="c-brown" href="#" title="Brown"></a>
-                                                    </li>
-                                                </ul> --}}
                                                 <h6 class="product-name">
-                                                    <a href="{{ route('web.product.product-detail', ['id' => encrypt($pr->id)]) }}">{{$pr->name}}</a>
+                                                    <a href="">Product Name</a>
                                                 </h6>
                                                 <div class="price-box">
-                                                    <span class="price-regular">₹{{number_format($pr->price, 2)}}</span>
-                                                    <span class="price-old"><del>₹{{ number_format($pr->mrp, 2) }}</del></span>
+                                                    <span class="price-old"><del>₹1499</del></span>
+                                                    <span class="price-regular">₹1299</span>
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- product item end -->
-                                        @endforeach
-                                        <!-- product item end --> --}}
+                                        {{-- @endforeach --}}
+                                        <!-- product item end --> 
                                     </div>
                                 </div>
                             </div>
@@ -118,37 +132,8 @@
             </div>
         </section>
         <!-- product area end -->
-        @endif
-
-        @if(isset($product1) && !empty($product1))
-        <!-- product banner statistics area start -->
-        <section class="product-banner-statistics">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="product-banner-carousel slick-row-10">
-                            @foreach ($product1 as $p1)
-                                <!-- banner single slide start -->
-                                <div class="banner-slide-item">
-                                    <figure class="banner-statistics">
-                                        <a href="{{ route('web.product.product-detail', ['id' => encrypt($p1->id)]) }}">
-                                            <img src="{{asset('web/img/product/'.$p1->main_image)}}" alt="product banner">
-                                        </a>
-                                        <div class="banner-content banner-content_style2">
-                                            <h5 class="banner-text3"><a href="{{ route('web.product.product-detail', ['id' => encrypt($p1->id)]) }}">{{ $p1->name }}</a></h5>
-                                        </div>
-                                    </figure>
-                                </div>
-                                <!-- banner single slide start -->
-                            @endforeach
-                            <!-- banner single slide start --> 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- product banner statistics area end -->
-        @endif
+        {{-- @endif --}}
+    
         <!-- about us area start -->
         <section class="about-us section-padding">
             <div class="container">
@@ -162,9 +147,9 @@
                         <div class="about-content">
                             <h2 class="about-title">About Us</h2>
                             <h5 class="about-sub-title">
-                                SSSDREAM LIFE E- COMMERCE PVT LTD is a India based leading company believes in natural health of people with a commitment to enrich the lives of everyone. 
+                                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here'.
                             </h5>
-                            <p>Our success is mainly based on cordial relationships among distributors, partners, customers and staff members. For this our efficient and expert professionals are to be credited as their efforts have shown up in our products and gained the company a reputation in the global markets.</p>
+                            <p>, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
                         </div>
                     </div>
                 </div>

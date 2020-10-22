@@ -26,6 +26,7 @@ Table of content
 23. footer
 -------------------------------------------------------------------*/
 /*------ Typography Style Start ------*/
+@import url('custom.css');
 body {
     color: #555555;
     line-height: 1.7;
@@ -1107,8 +1108,8 @@ textarea:focus {
 }
 
 .header-top {
-    padding: 10px 0;
     border-bottom: 1px solid #efefef;
+    background: #333;
 }
 
 .header-top-settings ul li {
@@ -1136,12 +1137,17 @@ textarea:focus {
 }
 
 .header-top-settings ul li:first-child {
-    padding-left: 0;
+    padding: 10px 20px;
     margin-left: 0;
+    background: #5affca;
 }
 
 .header-top-settings ul li:first-child:before {
     display: none;
+}
+
+.header-top-settings ul li a {
+    color: #333;
 }
 
 .header-top-settings ul li .dropdown-list {
@@ -1200,7 +1206,7 @@ textarea:focus {
 }
 
 .welcome-message p {
-    color: #555555;
+    color: #ffffff;
     font-size: 14px;
     line-height: 1;
 }
@@ -1392,7 +1398,7 @@ textarea:focus {
 .main-menu ul li a {
     color: #222222;
     font-size: 15px;
-    padding: 37px 14px;
+    padding: 25px 14px;
     font-weight: 400;
     display: block;
     text-transform: capitalize;
@@ -1404,7 +1410,7 @@ textarea:focus {
 }
 
 .main-menu ul li:first-child a {
-    padding-left: 0;
+    
 }
 
 .main-menu ul li:hover > a,
@@ -1648,7 +1654,7 @@ textarea:focus {
     position: fixed;
     width: 100%;
     z-index: 9;
-    background-color: #fff;
+    background-color: #ffffffe3;
     -webkit-box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
     box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
     -webkit-animation: 900ms cubic-bezier(0.2, 1, 0.22, 1) 0s normal none 1
@@ -1657,12 +1663,12 @@ textarea:focus {
         fadeInDown;
 }
 
-.sticky.is-sticky .main-menu li a {
-    padding: 20px 14px;
+.sticky.is-sticky .main-menu li a.main-tab {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .sticky.is-sticky .main-menu li:first-child a {
-    padding-left: 0;
 }
 
 .sticky.is-sticky .main-menu li .dropdown li a {
@@ -1682,7 +1688,7 @@ textarea:focus {
 }
 
 .sticky.is-sticky .logo img {
-    width: 30%;
+    width: 50%;
 }
 
 /*------ sticky menu style end ------*/
@@ -1719,12 +1725,13 @@ textarea:focus {
 }
 
 .btn-cart {
-    padding: 12px 25px;
+    padding: 12px;
     background-color: #fff;
     border-radius: 30px;
     text-transform: capitalize;
     -webkit-box-shadow: 0 2px 1px 0.5px rgba(0, 0, 0, 0.05);
     box-shadow: 0 2px 1px 0.5px rgba(0, 0, 0, 0.05);
+    color: #000;
 }
 
 .btn-cart:hover {
@@ -2461,7 +2468,7 @@ textarea:focus {
 02. Slider area
 --------------------------*/
 .hero-slider-item {
-    height: 500px;
+    height: 300px;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -3011,7 +3018,7 @@ textarea:focus {
 /*------ section title start ------*/
 .section-title {
     margin-top: -7px;
-    margin-bottom: 37px;
+    margin-bottom: 20px;
 }
 
 .section-title .title {
@@ -3283,6 +3290,17 @@ textarea:focus {
     animation-name: zoomIn;
     -webkit-animation-duration: 1s;
     animation-duration: 1s;
+    padding: 5px;
+    padding-bottom: 20px;
+    box-shadow: 2px 1px 5px 0px #b1aeae;
+    background: #e0bf6c;
+    transition: .5s ease-in-out;
+}
+
+.tab-content .tab-pane.show.active .product-item:hover {
+    box-shadow: 2px 1px 5px 0px #b1aeae;
+    background: #fae0a0;
+    transform: translateY(-10px);
 }
 
 /*----- product tab menu start -----*/
@@ -3717,14 +3735,15 @@ textarea:focus {
 }
 
 .price-regular {
-    color: #c29958;
-    font-weight: 500;
+    color: #2b2b2b;
+    font-weight: 700;
+    padding-left: 6px;
 }
 
 .price-old {
-    color: #999;
+    color: #4a4a4a;
     padding-left: 5px;
-    font-weight: 300;
+    font-weight: 500;
 }
 
 /*------- product item end -------*/
@@ -3942,7 +3961,7 @@ textarea:focus {
 /*----- testimonial area end -----*/
 /*----- breadcrumb style css start -----*/
 .breadcrumb-area {
-    background-color: #f5f5f5;
+    background-color: #d4d4d4;
 }
 
 .breadcrumb-wrap {
@@ -4828,7 +4847,7 @@ blockquote {
 
 .about-title {
     font-size: 48px;
-    color: #d1d1d1;
+    color: #dcb040;
     display: block;
     line-height: 1.1;
     margin-bottom: 38px;
@@ -5143,9 +5162,15 @@ blockquote {
   padding: 5px;
   padding-bottom: 20px;
   box-shadow: 2px 1px 5px 0px #b1aeae;
-  background: #fff;
-  border-radius: 10px;
+  background: #e0bf6c;
+  transition: .5s ease-in-out;
 }
+
+.shop-product-wrap.grid-view .product-item:hover {
+    box-shadow: 2px 1px 5px 0px #b1aeae;
+    background: #fae0a0;
+    transform: translateY(-10px);
+  }
 
 .shop-product-wrap.grid-view .product-list-item {
     display: none !important;
@@ -6547,6 +6572,7 @@ blockquote {
     -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
     padding: 23px 30px 30px;
+    border: 1px solid #fbb949;
 }
 
 @media only screen and (max-width: 575.98px) {
@@ -6725,8 +6751,8 @@ blockquote {
 /*------ contact info area end -------*/
 /*----- footer area start -----*/
 .footer-top {
-    background-color: #fff38d;
-    padding: 50px;
+    background-color: #191919;
+    padding: 30px 50px;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991.98px),
@@ -6743,11 +6769,13 @@ blockquote {
 .widget-title {
     margin-top: -6px;
     margin-bottom: 23px;
+    color: #ffd389;
 }
 
 .contact-block li {
     font-size: 14px;
     margin-bottom: 8px;
+    color: #ddd;
 }
 
 .contact-block li:last-child {
@@ -6761,7 +6789,7 @@ blockquote {
 }
 
 .contact-block li a {
-    color: #555555;
+    color: #ddd;
 }
 
 .contact-block li a:hover {
@@ -6780,7 +6808,7 @@ blockquote {
 
 .info-list li a {
     font-size: 14px;
-    color: #555555;
+    color: #ddd;
     text-transform: capitalize;
 }
 
@@ -6870,8 +6898,9 @@ blockquote {
 }
 
 .footer-bottom {
-    padding: 20px 0;
-    background: #151b3a;
+    padding: 10px 0;
+    background: #333;
+    border-bottom: 3px solid #5affca;
 }
 
 .copyright-text p a {

@@ -16,12 +16,9 @@
                                 <div class="widget-logo">
                                     <a href="index.html">
                                        
-                                        <img src="#" alt="brand logo" width="100">
+                                        <img src="{{asset('web/img/logo/logo.png')}}" alt="brand logo" >
                                     </a>
                                 </div>
-                            </div>
-                            <div class="widget-body">
-                                <p>Footer Text</p>
                             </div>
                         </div>
                     </div>
@@ -32,7 +29,7 @@
                                 <address class="contact-block">
                                     <ul>
                                         <li><i class="pe-7s-home"></i> Address</li>
-                                        <li><i class="pe-7s-mail"></i> <a href="mailto:admin@mail</a></li>
+                                        <li><i class="pe-7s-mail"></i> <a href="mailto:admin@mail.com">mailto:admin@mail.com</a></li>
                                         <li><i class="pe-7s-call"></i> <a href="tel:(+91)9879879789">(+91) 9879879789</a></li>
                                     </ul>
                                 </address>
@@ -60,7 +57,7 @@
                                 <a href="#"><i class="fa fa-facebook"></i></a>
                                 <a href="#"><i class="fa fa-twitter"></i></a>
                                 <a href="#"><i class="fa fa-instagram"></i></a>
-                                <a href="#"><i class="fa fa-youtube"></i></a>
+                                <a href="#"><i class="fa fa-whatsapp"></i></a>
                             </div>
                         </div>
                     </div>

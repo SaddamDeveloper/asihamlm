@@ -29,8 +29,8 @@
         <!-- login register wrapper start -->
         <div class="login-register-wrapper section-padding">
             <div class="container">
-                <div class="member-area-from-wrap">
-                    <div class="col-md-8">
+                <div class="member-area-from-wrap row">
+                    <div class="col-md-7">
                         <div class="login-reg-form-wrap">
                             <h5>Contact Us</h5>
                             <form class="form-horizontal" method="POST" action="http://localhost/mlm/public/member/login">
@@ -51,6 +51,25 @@
                                     <button class="btn btn-sqr">Contact Us</button>
                                 </div>
                             </form>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="login-reg-form-wrap">
+                            <h5>Get In Touch Us</h5>
+                            <div class="contact-info">
+                                <div class="single-input-item">
+                                    <i class="pe-7s-home"></i>
+                                    <p class="d-inline">4710-4890 Breckinridge Guwahati, Assam</p>
+                                </div>
+                                <div class="single-input-item">
+                                    <i class="pe-7s-phone"></i>
+                                    <a href="">+91 9456781245</a>
+                                </div>
+                                <div class="single-input-item">
+                                    <i class="pe-7s-mail"></i>
+                                    <a href="">mail@demo.com</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

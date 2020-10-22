@@ -17,7 +17,7 @@
                             <nav aria-label="breadcrumb">
                                 <ul class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.html"><i class="fa fa-home"></i></a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Image Gallery</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Document</li>
                                 </ul>
                             </nav>
                         </div>
@@ -34,7 +34,7 @@
                     <div class="col-12">
                         <!-- section title start -->
                         <div class="section-title text-center">
-                            <h2 class="title">Image Gallery</h2>
+                            <h2 class="title">Document</h2>
                         </div>
                         <!-- section title start -->
                     </div>
@@ -49,6 +49,7 @@
                                             <a href="">
                                                 <img class="img-responsive" src="{{asset('web/img/gallery/1.jpeg')}}" alt="Thumb-1">
                                             </a>
+                                            <h3>Pancard</h3>
                                         </div>
                                     </li>
                                 {{-- @endforeach
@@ -73,4 +74,5 @@
         <script>
             lightGallery(document.getElementById('lightgallery'));
         </script>
+        <style>.img-card a {margin-bottom: 10px}.img-card h3 {font-size: 20px;text-align: center;font-weight: 700}</style>
 @endsection

@@ -19,9 +19,9 @@ Route::get('/legal/docs', 'Web\WebsiteController@legalDocs')->name('web.legal');
 Route::get('/video/plan', 'Web\WebsiteController@videoPlan')->name('web.video_plan');
 Route::get('/video', 'Web\WebsiteController@video')->name('web.gallery.video');
 // =========== join-us ============= 
-Route::get('/register', function () {
-    return view('web.join');
-})->name('web.join');
+Route::get('/Document', function () {
+    return view('web.document');
+})->name('web.document');
 
 // =========== join-us ============= 
 Route::get('/club', function () {

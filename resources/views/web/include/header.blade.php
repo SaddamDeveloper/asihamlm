@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>SSSDREAM Life</title>
+    <title>Ashia Mlm</title>
     <meta name="robots" content="noindex, follow" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -40,6 +40,36 @@
     <header class="header-area header-wide">
         <!-- main header start -->
         <div class="main-header d-none d-lg-block">
+            <div class="header-top bdr-bottom">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-4">
+                            <div class="welcome-message">
+                                <p><i class="pe-7s-home"></i> 4710-4890 Breckinridge Guwahati, Assam</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div class="welcome-message">
+                                <p><i class="fa fa-envelope" aria-hidden="true"></i> <a href="">demo@example.com</a></p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="welcome-message">
+                                <p><i class="fa fa-phone" aria-hidden="true"></i> <a href="">+91 9445814698</a></p>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 text-right">
+                            <div class="header-top-settings">
+                                <ul class="nav align-items-center justify-content-end">
+                                    <li class="curreny-wrap">
+                                    <a href="{{route('web.login')}}"><i class="fa fa-sign-in" aria-hidden="true"></i> Login </a>                                        
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <!-- header middle area start -->
             <div class="header-main-area sticky">
@@ -51,7 +81,7 @@
                             <div class="logo">
                                 
                                 <a href="{{ route('web.index') }}">
-                                    <img src="#" alt="Brand Logo" width="100">
+                                    <img src="{{('web/img/logo/logo1.png')}}" alt="Brand Logo" width="100">
                                 </a>
                             </div>
                         </div>
@@ -64,36 +94,18 @@
                                     <!-- main menu navbar start -->
                                     <nav class="desktop-menu">
                                         <ul>
-                                            <li class="active"><a href="{{route('web.index')}}">Home </a></li>
-                                            <li class="active"><a href="{{route('web.about')}}">About </a></li>
-                                            <li><a href="#">Product <i class="fa fa-angle-down"></i></a>
-                                                <ul class="dropdown">
-                                                    <li><a href="{{route('web.product.product-list')}}">Our Product</a></li>
-                                                </ul>
-                                            </li>
-											<li><a href="#">Other <i class="fa fa-angle-down"></i></a>
-												<ul class="dropdown">
-													<li><a href="{{route('web.legal')}}">Legal</a></li>
-													<li><a href="">Certification</a></li>
-													<li><a href="">Bank Details</a></li>
-													<li><a href="">Grievance Cell</a></li>
-													<li><a href="#" target="_blank">Grievance Redressal Policy</a></li>
-												</ul>
-                                            </li>
-                                            <li><a href="#">Gallery <i class="fa fa-angle-down"></i></a>
+                                            <li><a class="main-tab" href="{{route('web.index')}}">Home </a></li>
+                                            <li><a class="main-tab" href="{{route('web.about')}}">About </a></li>
+                                            <li><a class="main-tab" href="{{route('web.product.product-list')}}">Product</a></li>
+                                            <li><a class="main-tab" href="{{route('web.document')}}">Document</a></li>
+                                            <li><a class="main-tab" href="#">Gallery <i class="fa fa-angle-down"></i></a>
                                                 <ul class="dropdown">
                                                     <li><a href="{{route('web.gallery.image')}}">Image Gallery</a></li>
                                                     <li><a href="{{route('web.gallery.video')}}">Video Gallery</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="{{route('web.login')}}">Login</a></li>
-                                            <li><a href="{{route('web.club')}}">Club</a></li>
-                                            <li><a href="{{route('web.reward')}}">Reward</a></li>
-                                            <li><a href="{{route('web.join')}}">Register</a></li>
-                                            <li><a href="{{ route('web.contact') }}">Contact</a></li>
-                                            
-                                            <li><a href="#">Plan</a></li>
-                                            {{-- <li><a href="{{ route('web.reward_achiever') }}">Reward Achiever</a></li> --}}
+                                            <li><a class="main-tab" href="{{ route('web.contact') }}">Contact</a></li>                                            
+                                            <li><a class="main-tab" href="#">Plan</a></li>
                                         </ul>
                                     </nav>
                                     <!-- main menu navbar end -->
@@ -151,39 +163,20 @@
                     
                     <!-- mobile menu start -->
                     <div class="mobile-navigation">
-                        {{-- <li><a href="{{route('web.login')}}">Login</a></li>
-                        <li><a href="{{route('web.club')}}">Club</a></li>
-                        <li><a href="{{route('web.reward')}}">Reward</a></li>
-                        <li><a href="{{route('web.join')}}">Register</a></li>
-                        <li><a href="{{ route('web.contact') }}">Contact</a></li>
-                        <li><a href="{{asset('web/img/plan.pptx')}}">Plan</a></li>
-                        <li><a href="{{ route('web.rank_achiever') }}">Rank Achiever</a></li>
-                        <!-- mobile menu navigation start --> --}}
                         <nav>
                             <ul class="mobile-menu">
-                                
-                                <li><a href="{{ route('web.index') }}">Home</a></li>
-                                <li><a href="{{route('web.about')}}">About</a></li>
-                                <li class="menu-item-has-children"><a>Other</a>
-                                    <ul class="dropdown">
-                                        <li><a href="{{route('web.legal')}}">Legal</a></li>
-                                        <li><a href="">Certification</a></li>
-                                        <li><a href="">Bank Details</a></li>
-                                        <li><a href="">Grievance Cell</a></li>
-                                        <li><a href="#" target="_blank">Grievance Redressal Policy</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="{{ route('web.product') }}">Product</a></li>
-                                <li class="menu-item-has-children"><a>Gallery</a>
+                                <li><a class="main-tab" href="{{route('web.index')}}">Home </a></li>
+                                <li><a class="main-tab" href="{{route('web.about')}}">About </a></li>
+                                <li><a class="main-tab" href="#">Product</a></li>
+                                <li><a class="main-tab" href="#">Document</a></li>
+                                <li><a class="main-tab" href="#">Gallery <i class="fa fa-angle-down"></i></a>
                                     <ul class="dropdown">
                                         <li><a href="{{route('web.gallery.image')}}">Image Gallery</a></li>
                                         <li><a href="{{route('web.gallery.video')}}">Video Gallery</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="{{route('web.reward')}}">Reward</a></li>
-                                <li><a href="{{ route('web.contact') }}">Contact</a></li>
-                                <li><a href="{{ route('web.club') }}">Club</a></li>
-                                <li><a href="#">Plan</a></li>
+                                <li><a class="main-tab" href="{{ route('web.contact') }}">Contact</a></li>                                            
+                                <li><a class="main-tab" href="#">Plan</a></li>
                             </ul>
                         </nav>
                         <!-- mobile menu navigation end -->
@@ -200,7 +193,6 @@
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="myaccount">
                                         <a class="dropdown-item" href="{{ route('web.login') }}"> Login</a>
-                                        <a class="dropdown-item" href="{{ route('web.join') }}">Register</a>
                                     </div>
                                 </div>
                             </li>
