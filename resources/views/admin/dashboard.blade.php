@@ -14,7 +14,7 @@
            
             <div class="col-md-4 col-sm-4 col-xs-6 tile_stats_count">
               <span class="count_top"><i class="fa fa-rupee"></i> Total Member Wallet Balance</span>
-              <div class="count">{{$total_member_wallet_balance}}</div>
+              <div class="count">{{number_format($total_member_wallet_balance, 2)}}</div>
             </div>
             <div class="col-md-4 col-sm-4 col-xs-6 tile_stats_count">
               <span class="count_top"><i class="fa fa-rupee"></i> Total Revenue</span>

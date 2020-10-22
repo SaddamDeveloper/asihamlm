@@ -40,6 +40,7 @@ Route::group(['namespace' => 'Admin'],function(){
             Route::post('/store/product', 'ProductController@store')->name('admin.store_product');
             Route::get('/list/product', 'ProductController@show')->name('admin.ajax.product_list');
             Route::get('/edit/product/{id}', 'ProductController@edit')->name('admin.edit.product');
+            Route::post('/update/product/', 'ProductController@update')->name('admin.update_product');
             Route::get('/delete/product/{id}','ProductController@destroy')->name('admin.delete.product');
         });
 
@@ -68,6 +69,11 @@ Route::group(['namespace' => 'Admin'],function(){
             Route::post('/add/pair/timing', 'PairTimingController@store')->name('admin.add_pair_timing');
         });
 
-
+        // WithDraw
+        Route::group(['namespace' => 'Withdraw'], function(){
+            Route::get('/withdraw/request', 'WithDrawController@index')->name('admin.withdraw');
+            Route::get('/withdraw/list', 'WithDrawController@list')->name('admin.ajax.withdraw');
+            Route::get('/withdraw/status/{id}/{status}', 'WithDrawController@status')->name('admin.withdraw_status');
+        });
     });
 });

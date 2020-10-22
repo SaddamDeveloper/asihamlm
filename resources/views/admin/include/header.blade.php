@@ -93,6 +93,8 @@
                   </li>
                   <li><a href="{{ route('admin.orders')}}"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Orders </span></a>
                   </li>
+                  <li><a href="{{ route('admin.withdraw')}}"><i class="fa fa-money" aria-hidden="true"></i> Withdraw </span></a>
+                  </li>
                   <li><a><i class="fa fa-edit"></i> Member Product <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="{{route('admin.product')}}">Product List</a></li>
