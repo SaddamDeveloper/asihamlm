@@ -91,6 +91,15 @@
                       <li><a href="{{route('admin.members')}}">Member List</a></li>
                     </ul>
                   </li>
+                  <li><a><i class="fa fa-globe"></i> Website Manage <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{route('admin.shopping_slider')}}">Slider List</a></li>
+                      <li><a href="{{route('admin.shopping_product')}}">Product List</a></li>
+                      <li><a href="{{route('admin.shopping_category')}}">Category List</a></li>
+                      <li><a href="{{route('admin.gallery')}}">Gallery List</a></li>
+                      <li><a href="{{route('admin.info')}}">Frontend Info</a></li>
+                    </ul>
+                  </li>
                   <li><a href="{{ route('admin.orders')}}"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Orders </span></a>
                   </li>
                   <li><a href="{{ route('admin.withdraw')}}"><i class="fa fa-money" aria-hidden="true"></i> Withdraw </span></a>
