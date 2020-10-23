@@ -14,9 +14,8 @@
                         <div class="widget-item">
                             <div class="widget-title">
                                 <div class="widget-logo">
-                                    <a href="index.html">
-                                       
-                                        <img src="{{asset('web/img/logo/logo.png')}}" alt="brand logo" >
+                                    <a href="{{ route('web.index') }}">
+                                        <img src="{{ !empty($frontend) ? asset('admin/photo/'.$frontend->logo) : asset('admin/photo/no-logo.jpg') }}" alt="brand logo" >
                                     </a>
                                 </div>
                             </div>
@@ -28,9 +27,9 @@
                             <div class="widget-body">
                                 <address class="contact-block">
                                     <ul>
-                                        <li><i class="pe-7s-home"></i> Address</li>
-                                        <li><i class="pe-7s-mail"></i> <a href="mailto:admin@mail.com">mailto:admin@mail.com</a></li>
-                                        <li><i class="pe-7s-call"></i> <a href="tel:(+91)9879879789">(+91) 9879879789</a></li>
+                                        <li><i class="pe-7s-home"></i> Address {{ !empty($frontend) ? $frontend->footer_address : '' }}</li>
+                                        <li><i class="pe-7s-mail"></i> <a href="mailto:admin@mail.com">mailto:{{ !empty($frontend) ? $frontend->email : '' }}</a></li>
+                                        <li><i class="pe-7s-call"></i> <a href="tel:(+91)9879879789">(+91) {{ !empty($frontend) ? $frontend->mobile : '' }}</a></li>
                                     </ul>
                                 </address>
                             </div>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Ashia Mlm</title>
+    <title>{{ config('app.name') }}</title>
     <meta name="robots" content="noindex, follow" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -45,17 +45,17 @@
                     <div class="row align-items-center">
                         <div class="col-lg-4">
                             <div class="welcome-message">
-                                <p><i class="pe-7s-home"></i> 4710-4890 Breckinridge Guwahati, Assam</p>
+                                <p><i class="pe-7s-home"></i> {{ !empty($frontend) ? $frontend->footer_address : ''  }}</p>
                             </div>
                         </div>
                         <div class="col-lg-2">
                             <div class="welcome-message">
-                                <p><i class="fa fa-envelope" aria-hidden="true"></i> <a href="">demo@example.com</a></p>
+                                <p><i class="fa fa-envelope" aria-hidden="true"></i> <a href="">{{ !empty($frontend) ? $frontend->email : '' }}</a></p>
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="welcome-message">
-                                <p><i class="fa fa-phone" aria-hidden="true"></i> <a href="">+91 9445814698</a></p>
+                                <p><i class="fa fa-phone" aria-hidden="true"></i> <a href="">+91 {{ !empty($frontend) ? $frontend->mobile : '' }}</a></p>
                             </div>
                         </div>
                         <div class="col-lg-2 text-right">
@@ -81,7 +81,7 @@
                             <div class="logo">
                                 
                                 <a href="{{ route('web.index') }}">
-                                    <img src="{{('web/img/logo/logo1.png')}}" alt="Brand Logo" width="100">
+                                    <img src="{{ !empty($frontend) ? asset('admin/photo/'.$frontend->logo) : asset('admin/photo/no-logo.jpg') }}" alt="Brand Logo" width="100">
                                 </a>
                             </div>
                         </div>
@@ -94,7 +94,7 @@
                                     <!-- main menu navbar start -->
                                     <nav class="desktop-menu">
                                         <ul>
-                                            <li><a class="main-tab" href="{{route('web.index')}}">Home </a></li>
+                                            <li><a class="main-tab" href="{{route('web.index')}}">Home</a></li>
                                             <li><a class="main-tab" href="{{route('web.about')}}">About </a></li>
                                             <li><a class="main-tab" href="{{route('web.product.product-list')}}">Product</a></li>
                                             <li><a class="main-tab" href="{{route('web.document')}}">Document</a></li>

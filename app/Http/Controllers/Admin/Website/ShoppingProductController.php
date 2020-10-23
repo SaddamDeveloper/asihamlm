@@ -17,12 +17,12 @@ class ShoppingProductController extends Controller
 {
     public function shoppingSlider()
     {
-        return view('admin.shopping_slider');
+        return view('admin.frontend.slider');
     }
 
     public function addShoppingSlider()
     {
-        return view('admin.add_shopping_slider');
+        return view('admin.frontend.add_slider');
     }
     public function ShoppingSliderList()
     {
@@ -30,7 +30,7 @@ class ShoppingProductController extends Controller
         ->addIndexColumn()
         ->addColumn('slider_image', function($row){
             if($row->slider_image){
-                $slider_image = '<img src="'.asset("web/img/slider/thumb/".$row->slider_image).'" width="100"/>';
+                $slider_image = '<img src="'.asset("admin/photo/".$row->slider_image).'" width="200"/>';
             }
             return $slider_image;
         })
@@ -82,8 +82,8 @@ class ShoppingProductController extends Controller
         }catch(DecryptException $e) {
             abort(404);
         }
-        $product = ShoppingSlider::find($id);
-        return view('admin.edit_shopping_slider', compact('product'));
+        $slider = ShoppingSlider::find($id);
+        return view('admin.frontend.edit_slider', compact('slider'));
     }
 
     public function ShoppingSliderStatus($sId,$statusId){
@@ -101,20 +101,65 @@ class ShoppingProductController extends Controller
        }
     }
 
-    public function ShoppingSliderUpdate(Request $request, $pId)
+    public function ShoppingSliderUpdate(Request $request)
     {   
-        try{
-            $id = decrypt($pId);
-        }catch(DecryptException $e) {
-            abort(404);
-        }
+       
         $this->validate($request, [
-            'slider_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'slider_name'   => 'required',
+            'offer' => 'required',
+            'banner_title' => 'required',
         ]);
-        
+        $id = $request->input('id');
+        $image1 = null;
+        if($request->hasfile('slider_image'))
+        {
+            $this->validate($request, [
+                'slider_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                ]);
+            $logo_array = $request->file('slider_image');
+            $image1 = $this->imageInsert($logo_array, $request, 1);
+           
+            // Check wheather image is in DB
+            $checkImage = DB::table('shopping_sliders')->where('id', $id)->first();
+            if($checkImage){
+                //Delete
+                $image_path_thumb = "/public/admin/photo/thumb/".$checkImage->slider_image;  
+                $image_path_original = "/public/admin/photo/".$checkImage->slider_image;  
+                if(File::exists($image_path_thumb)) {
+                    File::delete($image_path_thumb);
+                }
+                if(File::exists($image_path_original)){
+                    File::delete($image_path_original);
+                }
+
+                //Update
+                $image_update = DB::table('shopping_sliders')
+                ->where('id', $id)
+                ->update([
+                    'slider_image' => $image1,
+                    'updated_at' => Carbon::now()
+                ]);   
+                if($image_update){
+                    return redirect()->back()->with('message','Product Updated Successfully!');
+                }
+            }else{
+                 //Update
+                 $image_update = DB::table('shopping_sliders')
+                 ->where('id', $id)
+                 ->update([
+                     'slider_image' => $image1,
+                     'updated_at' => Carbon::now()
+                 ]);   
+                if($image_update){
+                        return redirect()->back()->with('message','Product Updated Successfully!');
+                    }
+            }
+        }
         $shopping_slider = ShoppingSlider::find($id);
-        $shopping_slider->slider_name = $slider_name;
-        $shopping_slider->slider_image = $slider_image;
+        $shopping_slider->slider_name = $request->input('slider_name');
+        $shopping_slider->offer = $request->input('offer');
+        $shopping_slider->banner_title = $request->input('banner_title');
+        $shopping_slider->banner_subtitle = $request->input('banner_subtitle');
         $update = $shopping_slider->save();
 
         if($update){
@@ -215,7 +260,7 @@ class ShoppingProductController extends Controller
         }
 
         $shopping_product_status = ShoppingProduct::where('id', $id)
-            ->update(['status' => $sId, 'updated_at' => Carbon::now()->setTimezone('Asia/Kolkata')->toDateTimeString()]);
+            ->update(['status' => $sId, 'updated_at' => Carbon::now()]);
        if($shopping_product_status){
            return redirect()->back()->with('message','Status Updated Successfully!');
        }
@@ -259,7 +304,7 @@ class ShoppingProductController extends Controller
                 ->where('id', $id)
                 ->update([
                     'main_image' => $image1,
-                    'updated_at' => Carbon::now()->setTimezone('Asia/Kolkata')->toDateTimeString()
+                    'updated_at' => Carbon::now()
                 ]);   
 
                 if($image_update){
@@ -271,7 +316,7 @@ class ShoppingProductController extends Controller
                  ->where('id', $id)
                  ->update([
                      'main_image' => $image1,
-                     'updated_at' => Carbon::now()->setTimezone('Asia/Kolkata')->toDateTimeString()
+                     'updated_at' => Carbon::now()
                  ]);   
                 if($image_update){
                         return redirect()->back()->with('message','Product Updated Successfully!');
@@ -317,7 +362,7 @@ class ShoppingProductController extends Controller
         $shopping_category->name = $request->input('category');
         $shopping_category->parent_id = NULL;
         $shopping_category->status = '1';
-        $shopping_category->created_at = Carbon::now()->setTimezone('Asia/Kolkata')->toDateTimeString();
+        $shopping_category->created_at = Carbon::now();
 
         $save = $shopping_category->save();
         if($save){
@@ -391,12 +436,12 @@ class ShoppingProductController extends Controller
     }
 
     function imageInsert($image, Request $request, $flag){
-        $destination = base_path().'/public/web/img/product/';
+        $destination = base_path().'/public/admin/photo/';
         $image_extension = $image->getClientOriginalExtension();
         $image_name = md5(date('now').time()).$flag.".".$image_extension;
         $original_path = $destination.$image_name;
         Image::make($image)->save($original_path);
-        $thumb_path = base_path().'/public/web/img/product/thumb/'.$image_name;
+        $thumb_path = base_path().'/public/admin/photo/thumb/'.$image_name;
         Image::make($image)
         ->resize(300, 400)
         ->save($thumb_path);
@@ -405,16 +450,11 @@ class ShoppingProductController extends Controller
     }
 
     function sliderImageInsert($image, Request $request, $flag){
-        $destination = base_path().'/public/web/img/slider/';
+        $destination = base_path().'/public/admin/photo/';
         $image_extension = $image->getClientOriginalExtension();
         $image_name = md5(date('now').time()).$flag.".".$image_extension;
         $original_path = $destination.$image_name;
         Image::make($image)->save($original_path);
-        $thumb_path = base_path().'/public/web/img/slider/thumb/'.$image_name;
-        Image::make($image)
-        ->resize(300, 400)
-        ->save($thumb_path);
-
         return $image_name;
     }
 }

@@ -6,7 +6,6 @@
 <!-- page content -->
 <div class="right_col" role="main">
         <div class="row">
-                {{-- <div class="col-md-2"></div> --}}
                 <div class="col-md-12" style="margin-top:50px;">
                     <div class="x_panel">
     
@@ -33,7 +32,7 @@
                                             <label for="logo">Logo</label>
                                             <input type="file" class="form-control" name="logo">
                                             <div>
-                                                <img src="{{ asset('web/img/logo/'.$info->logo) }}" alt="logo" width="100">
+                                                <img src="{{ asset('admin/photo/thumb/'.$info->logo) }}" alt="logo" width="100">
                                             </div>
                                                 @if($errors->has('logo'))
                                                     <span class="invalid-feedback" role="alert" style="color:red">

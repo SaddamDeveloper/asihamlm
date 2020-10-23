@@ -19,7 +19,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="hero-slider-content slide-1">
-                                        <h2 class="slide-title">Ashia MLM</h2>
+                                        <h2 class="slide-title">{{ config('app.name') }}</h2>
                                         <h4 class="slide-desc">Healthy Life with Ashia</h4>
                                         {{-- <h2 class="slide-title">{{$sl->banner_title}}</h2>
                                         <h4 class="slide-desc">{{$sl->banner_subtitle}}</h4> --}}

@@ -8,6 +8,7 @@ use App\Models\Frontend;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Intervention\Image\Facades\Image;
 
 class FrontendController extends Controller
 {
@@ -27,11 +28,11 @@ class FrontendController extends Controller
             $image1 = $this->imageInsert($logo_array, $request, 1);
            
             // Check wheather image is in DB
-            $checkImage = DB::table('frotends')->where('id', $id)->first();
+            $checkImage = DB::table('frontends')->where('id', $id)->first();
             if($checkImage){
                 //Delete
-                $image_path_thumb = "/public/web/img/product/thumb/".$checkImage->logo;  
-                $image_path_original = "/public/web/img/product/".$checkImage->logo;  
+                $image_path_thumb = "/public/admin/photo/thumb/".$checkImage->logo;  
+                $image_path_original = "/public/admin/photo/".$checkImage->logo;  
                 if(File::exists($image_path_thumb)) {
                     File::delete($image_path_thumb);
                 }
@@ -40,7 +41,7 @@ class FrontendController extends Controller
                 }
 
                 //Update
-                $image_update = DB::table('frotends')
+                $image_update = DB::table('frontends')
                 ->where('id', $id)
                 ->update([
                     'logo' => $image1,
@@ -51,7 +52,7 @@ class FrontendController extends Controller
                 }
             }else{
                  //Update
-                 $image_update = DB::table('frotends')
+                 $image_update = DB::table('frontends')
                  ->where('id', $id)
                  ->update([
                      'logo' => $image1,
@@ -62,7 +63,7 @@ class FrontendController extends Controller
                     }
             }
         }
-        $frontend = DB::table('frotends')
+        $frontend = DB::table('frontends')
                  ->update([
                      'footer_text' => $request->input('footer'),
                      'footer_address' => $request->input('address'),
@@ -77,5 +78,19 @@ class FrontendController extends Controller
         if($frontend){
             return redirect()->back()->with('message','Successfully Updated Successfully');
         }
+    }
+
+    private function imageInsert($image, Request $request, $flag){
+        $destination = base_path().'/public/admin/photo/';
+        $image_extension = $image->getClientOriginalExtension();
+        $image_name = md5(date('now').time()).$flag.".".$image_extension;
+        $original_path = $destination.$image_name;
+        Image::make($image)->save($original_path);
+        $thumb_path = base_path().'/public/admin/photo/thumb/'.$image_name;
+        Image::make($image)
+        ->resize(242, 136)
+        ->save($thumb_path);
+
+        return $image_name;
     }
 }
