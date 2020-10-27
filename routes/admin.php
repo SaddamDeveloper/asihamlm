@@ -112,6 +112,20 @@ Route::group(['namespace' => 'Admin'],function(){
             Route::get('/gallery/action/{id}/{status}', 'GalleryController@galleryStatus')->name('admin.gallery_status');
             Route::get('/gallery/delete/{id}', 'GalleryController@galleryDelete')->name('admin.gallery_delete');
 
+            //Video Gallery Add
+            Route::get('/video/gallery/', 'VideoGalleryController@videoGallery')->name('admin.video_gallery');
+            Route::post('/store/video/gallery/', 'VideoGalleryController@storeVideoGallery')->name('admin.store_video_gallery');
+            Route::get('/video/gallery/list/', 'VideoGalleryController@videoGalleryList')->name('admin.ajax.get_video_gallery_list');
+            Route::get('/video/gallery/status/{id}/{status}', 'VideoGalleryController@videoGalleryStatus')->name('admin.video_gallery_status');
+            Route::get('/video/gallery/delete/{id}', 'VideoGalleryController@videoGalleryDelete')->name('admin.video_gallery_delete');
+
+            // Legal Add
+            Route::get('/legal/docs', 'LegalController@legal')->name('admin.legal');
+            Route::post('/store/legal/', 'LegalController@storeLegal')->name('admin.store_legal');
+            Route::get('/legal/list/', 'LegalController@legalList')->name('admin.ajax.get_legal_list');
+            Route::get('/legal/action/{id}/{status}', 'LegalController@legalAction')->name('admin.legal_action');
+            Route::get('/legal/delete/{id}', 'LegalController@legalDelete')->name('admin.legal_delete');
+            
             // Forented
             Route::get('info/', 'FrontendController@info')->name('admin.info');
             Route::post('/store/info/', 'FrontendController@storeInfo')->name('admin.store_frontend');

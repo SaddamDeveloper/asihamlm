@@ -7,15 +7,14 @@ use App\Http\Controllers\Controller;
 use App\Models\Gallery;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Support\Facades\File;
+use Intervention\Image\Facades\Image;
 
 class GalleryController extends Controller
 {
-    public function gallery()
-    {
-        return view('admin.gallery');
+    public function gallery(){
+        return view('admin.gallery.index');
     }
-    public function storeGallery(Request $request)
-    {
+    public function storeGallery(Request $request){
         $this->validate($request, [
             'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
@@ -23,7 +22,7 @@ class GalleryController extends Controller
         $image = null;
         if($request->hasfile('photo')){
             $image_array = $request->file('photo');
-            $image = $this->galleryImageInsert($image_array, $request, 1);
+            $image = $this->galleryImageInsert($image_array, 1);
         }
         $gallery->photo = $image;
         if($gallery->save()){
@@ -31,14 +30,13 @@ class GalleryController extends Controller
         }
     }
 
-    public function galleryList()
-    {
+    public function galleryList(){
         $query = Gallery::orderBy('created_at', 'DESC');
         return datatables()->of($query->get())
         ->addIndexColumn()
         ->addColumn('photo', function($row){
             if($row->photo){
-                $photos = '<img src="'.asset("web/img/gallery/thumb/".$row->photo).'" width="100"/>';
+                $photos = '<img src="'.asset("gallery/thumb/".$row->photo).'" height="100" width="200"/>';
             }
             return $photos;
         })
@@ -83,5 +81,19 @@ class GalleryController extends Controller
         }else{
             return redirect()->back()->with('error','Something Went Wrong!');
         }
+    }
+
+    private function galleryImageInsert($image, $flag){
+        $destination = base_path().'/public/gallery/';
+        $image_extension = $image->getClientOriginalExtension();
+        $image_name = md5(date('now').time()).$flag.".".$image_extension;
+        $original_path = $destination.$image_name;
+        Image::make($image)->save($original_path);
+        $thumb_path = base_path().'/public/gallery/thumb/'.$image_name;
+        Image::make($image)
+        ->resize(300, 400)
+        ->save($thumb_path);
+
+        return $image_name;
     }
 }

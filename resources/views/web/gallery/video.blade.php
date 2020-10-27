@@ -32,11 +32,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <!-- section title start -->
                         <div class="section-title text-center">
                             <h2 class="title">Video Gallery</h2>
                         </div>
-                        <!-- section title start -->
                     </div>
                 </div>
                 @if(isset($video_gallery) && !empty($video_gallery))
@@ -45,7 +43,7 @@
                             <div id="video-gallery" class="row">
                                 @foreach ($video_gallery as $vg)
                                     <a href="https://www.youtube.com/watch?v={{ $vg->youtube_id }}" >
-                                        <img src="{{asset('web/img/gallery/'.$vg->photo)}}" />
+                                        <img src="{{asset('video/gallery/'.$vg->photo)}}" />
                                     </a>
                                 @endforeach
                             </div>

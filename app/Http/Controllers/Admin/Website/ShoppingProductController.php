@@ -24,8 +24,7 @@ class ShoppingProductController extends Controller
     {
         return view('admin.frontend.add_slider');
     }
-    public function ShoppingSliderList()
-    {
+    public function ShoppingSliderList(){
         return datatables()->of(ShoppingSlider::get())
         ->addIndexColumn()
         ->addColumn('slider_image', function($row){

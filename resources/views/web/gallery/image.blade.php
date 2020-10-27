@@ -42,20 +42,20 @@
                 <div class="member-area-from-wrap">
                     <div class="demo-gallery">
                         <ul id="lightgallery" class="list-unstyled row">
-                            {{-- @if (isset($gallery) && !empty($gallery))
-                                @foreach ($gallery as $gl) --}}
-                                    <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="img/1-375.jpg 375, img/1-480.jpg 480, img/1.jpg 800" data-src="{{asset('web/img/gallery/1.jpeg')}}" data-sub-html="<h4>Fading Light</h4><p>Classic view from Rigwood Jetty on Coniston Water an old archive shot similar to an old post but a little later on.</p>" data-pinterest-text="Pin it1" data-tweet-text="share on twitter 1">
+                            @if (isset($gallery) && !empty($gallery))
+                                @foreach ($gallery as $gl)
+                                    <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="img/1-375.jpg 375, img/1-480.jpg 480, img/1.jpg 800" data-src="{{asset('gallery/'.$gl->photo)}}" data-sub-html="<h4>Fading Light</h4><p>Classic view from Rigwood Jetty on Coniston Water an old archive shot similar to an old post but a little later on.</p>" data-pinterest-text="Pin it1" data-tweet-text="share on twitter 1">
                                         <div class="img-card">
                                             <a href="">
-                                                <img class="img-responsive" src="{{asset('web/img/gallery/1.jpeg')}}" alt="Thumb-1">
+                                                <img class="img-responsive" src="{{asset('gallery/'.$gl->photo)}}" alt="Thumb-1">
                                             </a>
                                         </div>
                                     </li>
-                                {{-- @endforeach
-                            @endif --}}
+                                @endforeach
+                            @endif
                         </ul>
                         <div class="pull-right">
-                            {{-- {{ $gallery->links() }}     --}}
+                            {{ $gallery->links() }}    
                         </div> 
                     </div>
                 </div>

@@ -8,13 +8,15 @@ use App\Frotend;
 use App\Rewards;
 use Carbon\Carbon;
 use App\Tree;
-use App\Gallery;
 use App\Model\ShoppingCategory;
+use App\Models\Gallery;
 use App\Models\Legal;
 use App\Models\ShoppingProduct;
 use App\Models\ShoppingSlider;
 use App\Models\VideoGallery;
 use App\Models\VideoPlan;
+use Illuminate\Contracts\Encryption\DecryptException;
+
 class WebsiteController extends Controller
 {
     public function index()
@@ -112,8 +114,7 @@ class WebsiteController extends Controller
     
     public function image()
     {
-        // $gallery = Gallery::orderBy('created_at', 'DESC')->paginate(8);
-        $gallery = null;
+        $gallery = Gallery::whereStatus(1)->orderBy('created_at', 'DESC')->paginate(8);
         return view('web.gallery.image', compact('gallery'));
     }
 
@@ -135,8 +136,7 @@ class WebsiteController extends Controller
     }
     
     public function video() {
-        // $video_gallery = VideoGallery::orderBy('created_at', 'DESC')->paginate(8);
-        $video_gallery = null;
+        $video_gallery = VideoGallery::whereStatus(1)->orderBy('created_at', 'DESC')->paginate(8);
         return view('web.gallery.video', compact('video_gallery'));
     }
 }

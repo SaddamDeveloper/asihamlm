@@ -17,7 +17,7 @@ Route::get('/product/data', 'Web\WebsiteController@productData')->name('web.prod
 Route::get('/category/filter/{id}', 'Web\WebsiteController@categoryFilter')->name('web.category_filter');
 Route::get('/legal/docs', 'Web\WebsiteController@legalDocs')->name('web.legal');
 Route::get('/video/plan', 'Web\WebsiteController@videoPlan')->name('web.video_plan');
-Route::get('/video', 'Web\WebsiteController@video')->name('web.gallery.video');
+Route::get('/videos', 'Web\WebsiteController@video')->name('web.gallery.video');
 // =========== join-us ============= 
 Route::get('/Document', function () {
     return view('web.document');
