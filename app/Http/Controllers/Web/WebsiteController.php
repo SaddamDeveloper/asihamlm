@@ -19,44 +19,37 @@ use Illuminate\Contracts\Encryption\DecryptException;
 
 class WebsiteController extends Controller
 {
-    public function index()
-    {
+    public function index(){
         $slider = ShoppingSlider::where('status', 1)->orderBy('created_at', 'DESC')->get();
         $product = ShoppingProduct::where('section', 1)->where('status', 1)->orderBy('created_at', 'DESC')->get();
         $product1 = ShoppingProduct::where('section', 2)->where('status', 1)->orderBy('created_at', 'ASC')->get();
         return view('web.index');
     }
-    public function about()
-    {
+    public function about(){
         return view('web.about');
     }
-    public function plan()
-    {
+    public function plan(){
         return view('web.plan');
     }
 
-    public function product()
-    {
+    public function product(){
         // $product = ShoppingProduct::where('section', 2)->orderBy('created_at', 'DESC')->paginate(4);
         return view('web.product');
     }
     
-    public function contact()
-    {
+    public function contact(){
         return view('web.contact');
     }
    
 
-    public function productList()
-    {
+    public function productList(){
         // $categories = ShoppingCategory::orderBy('created_at', 'DESC')->where('status', 1)->take(5)->get();
         // $products = ShoppingProduct::where('section', 1)->where('status', 1)->orderBy('created_at', 'DESC')->paginate(8);
         $categories = null;
         $products = null;
         return view('web.product.product-list', compact('products', 'categories'));
     }
-    public function productDetail($id)
-    {
+    public function productDetail($id){
         try{
             $id = decrypt($id);
         }catch(DecryptException $e) {
@@ -68,8 +61,7 @@ class WebsiteController extends Controller
         return view('web.product.product-detail', compact('product_detail', 'related_product'));
     }
 
-    public function productData(Request $request)
-    {
+    public function productData(Request $request){
         if($request->ajax()){
             $id = $request->get('id');
             if(!empty($id)) {
@@ -112,14 +104,12 @@ class WebsiteController extends Controller
         }
     }
     
-    public function image()
-    {
+    public function image(){
         $gallery = Gallery::whereStatus(1)->orderBy('created_at', 'DESC')->paginate(8);
         return view('web.gallery.image', compact('gallery'));
     }
 
-    public function categoryFilter($id)
-    {
+    public function categoryFilter($id){
         try {
             $id = decrypt($id);
         }catch(DecryptException $e) {
@@ -129,8 +119,7 @@ class WebsiteController extends Controller
         return view('web.product.product-list', compact('products'));
     }
 
-    public function legalDocs()
-    {
+    public function legalDocs(){
         $legal = Legal::orderBy('created_at', 'DESC')->paginate(8);
         return view('web.legal', compact('legal'));
     }
@@ -138,5 +127,10 @@ class WebsiteController extends Controller
     public function video() {
         $video_gallery = VideoGallery::whereStatus(1)->orderBy('created_at', 'DESC')->paginate(8);
         return view('web.gallery.video', compact('video_gallery'));
+    }
+
+    public function document() {
+        $legals = Legal::whereStatus(1)->orderBy('created_at', 'DESC')->paginate(8);
+        return view('web.document', compact('legals'));
     }
 }
