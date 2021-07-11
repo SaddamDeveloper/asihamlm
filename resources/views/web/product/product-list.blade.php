@@ -15,7 +15,7 @@
                             <nav aria-label="breadcrumb">
                                 <ul class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.html"><i class="fa fa-home"></i></a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Product List {{ (isset($products->category->name)) ? $products->category->name : "" }}</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Product List</li>
                                 </ul>
                             </nav>
                         </div>
@@ -32,20 +32,7 @@
                     <!-- sidebar area start -->
                     <div class="col-lg-2 order-1">
                         <aside class="sidebar-wrapper">
-                            <!-- single sidebar start -->
-                            <div class="sidebar-single">
-                                <h5 class="sidebar-title">Categories</h5>
-                                <div class="sidebar-body">
-                                    <ul class="shop-categories">
-                                        @if (isset($categories) && !empty($categories))
-                                            @foreach ($categories as $category)
-                                                <li><a href="{{ route('web.category_filter', ['id' => encrypt($category->id)]) }}"> {{ $category->name }}</a></li>
-                                            @endforeach
-                                        @endif
-                                    </ul>
-                                </div>
-                            </div>
-                            <!-- single sidebar end -->
+                            
                         </aside>
                     </div>
                     <!-- sidebar area end -->
@@ -56,30 +43,6 @@
                             <!-- shop product top wrap start -->
                             <div class="shop-top-bar">
                                 <div class="row align-items-center">
-                                    {{-- <div class="col-lg-7 col-md-6 order-2 order-md-1">
-                                        <div class="top-bar-left">
-                                            <div class="product-amount">                                                
-                                                <h5 class="sidebar-title">Categories</h5>
-                                                <p>Showing 1–16 of 21 results</p>
-                                            </div>
-                                        </div>
-                                    </div> --}}
-                                    <div class="col-lg-5 col-md-6 order-1 order-md-2">
-                                        <div class="top-bar-right">
-                                            <div class="product-short">
-                                                <p>Sort By : </p>
-                                                <select class="nice-select" name="sortby">
-                                                    <option value="trending">Relevance</option>
-                                                    <option value="sales">Name (A - Z)</option>
-                                                    <option value="sales">Name (Z - A)</option>
-                                                    <option value="rating">Price (Low &gt; High)</option>
-                                                    <option value="date">Rating (Lowest)</option>
-                                                    <option value="price-asc">Model (A - Z)</option>
-                                                    <option value="price-asc">Model (Z - A)</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                             <!-- shop product top wrap start -->

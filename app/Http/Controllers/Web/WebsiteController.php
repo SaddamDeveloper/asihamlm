@@ -20,10 +20,9 @@ use Illuminate\Contracts\Encryption\DecryptException;
 class WebsiteController extends Controller
 {
     public function index(){
-        $slider = ShoppingSlider::where('status', 1)->orderBy('created_at', 'DESC')->get();
-        $product = ShoppingProduct::where('section', 1)->where('status', 1)->orderBy('created_at', 'DESC')->get();
-        $product1 = ShoppingProduct::where('section', 2)->where('status', 1)->orderBy('created_at', 'ASC')->get();
-        return view('web.index');
+        $sliders = ShoppingSlider::whereStatus(1)->orderBy('created_at', 'DESC')->get();
+        $products = ShoppingProduct::whereStatus(1)->orderBy('created_at', 'ASC')->limit(1)->get();
+        return view('web.index',compact('sliders', 'products'));
     }
     public function about(){
         return view('web.about');
@@ -78,7 +77,7 @@ class WebsiteController extends Controller
                 <div class="col-lg-7">
                     <div class="product-details-des">
                         <div class="manufacturer-name">
-                            <a href="">SSSDREAMLIFE</a>
+                            <a href="">'.config('app.name').'</a>
                         </div>
                         <h3 class="product-name">'.$product_data->name.'</h3>
                         <div class="price-box">
@@ -133,4 +132,5 @@ class WebsiteController extends Controller
         $legals = Legal::whereStatus(1)->orderBy('created_at', 'DESC')->paginate(8);
         return view('web.document', compact('legals'));
     }
+
 }

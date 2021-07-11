@@ -20,6 +20,7 @@ Route::group(['namespace' => 'Web'], function () {
     Route::get('/videos', 'WebsiteController@video')->name('web.gallery.video');
     // =========== join-us ============= 
     Route::get('/Document', 'WebsiteController@document')->name('web.document');
+    Route::get('/product/data', 'WebsiteController@productData')->name('web.product.data');
 });
 
 // =========== join-us ============= 

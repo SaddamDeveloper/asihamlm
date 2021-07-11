@@ -95,15 +95,6 @@ Route::group(['namespace' => 'Admin'],function(){
             Route::get('/shopping/product/status/{pId}/{status}', 'ShoppingProductController@ShoppingProductStatus')->name('admin.shopping_product_status');
             Route::get('/shopping/product/edit/{id}', 'ShoppingProductController@ShoppingProductEdit')->name('admin.shopping_product_edit');
             Route::post('/shopping/product/update/', 'ShoppingProductController@ShoppingProductUpdate')->name('admin.update_shopping_product');
-
-            //Shopping Category
-            Route::get('/shopping/category', 'ShoppingProductController@shoppingCategory')->name('admin.shopping_category');
-            Route::get('/shopping/category/add', 'ShoppingProductController@addShoppingCategory')->name('admin.add_shopping_category');
-            Route::post('/shopping/category/store', 'ShoppingProductController@storeShoppingCategory')->name('admin.store_shopping_category');
-            Route::get('/shopping/category/list', 'ShoppingProductController@ShoppingCategoryList')->name('admin.shoppingCategoryList');
-            Route::get('/shopping/category/status/{pId}/{status}', 'ShoppingProductController@ShoppingCategoryStatus')->name('admin.shopping_category_status');
-            Route::get('/shopping/category/edit/{id}', 'ShoppingProductController@ShoppingCategoryEdit')->name('admin.shopping_category_edit');
-            Route::post('/shopping/category/update/{id}', 'ShoppingProductController@ShoppingCategoryUpdate')->name('admin.update_shopping_category');
             
             // Gallery Add
             Route::get('gallery/', 'GalleryController@gallery')->name('admin.gallery');

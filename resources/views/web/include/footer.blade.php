@@ -108,9 +108,8 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <!-- product details inner end -->
                     <div class="product-details-inner">
-                        {{-- <div class="row">
+                        <div class="row">
                             <div class="col-lg-5">
                                 <div class="product-large-slider">
                                     <div class="pro-large-img img-zoom">
@@ -198,7 +197,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div> --}}
+                        </div>
                     </div> <!-- product details inner end -->
                 </div>
             </div>
@@ -321,7 +320,7 @@
     <!-- Main JS -->
     <script src="{{asset('web/js/main.js')}}"></script>    
     <script src="https://f.vimeocdn.com/js/froogaloop2.min.js"></script>
-    {{-- <script>
+    <script>
         $(document).ready(function () {
             function fetch_product_data(id){
                 $.ajaxSetup({
@@ -358,7 +357,7 @@
                     fetch_product_data(id);
                 });
             });
-    </script>     --}}
+    </script>    
 	@yield('seo')
 </body>
 

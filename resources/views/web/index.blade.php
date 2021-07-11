@@ -8,21 +8,19 @@
     
     <main style="background:url('web/img/patt.jpg')">
         <!-- hero slider area start -->
-        {{-- @if(isset($slider) && !empty($slider)) --}}
+        @if(isset($sliders) && !empty($sliders))
         <section class="slider-area">
             <div class="hero-slider-active slick-arrow-style slick-arrow-style_hero slick-dot-style">
-                {{-- @foreach ($slider as $sl) --}}
+                @foreach ($sliders as $slider)
                 <!-- single slider item start -->
                 <div class="hero-single-slide hero-overlay">
-                    <div class="hero-slider-item bg-img" data-bg="{{asset('web/img/slider/home1-slide1.jpg')}}" width="1350">
+                    <div class="hero-slider-item bg-img" data-bg="{{asset('admin/photo/'.$slider->slider_image)}}" width="1350">
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="hero-slider-content slide-1">
-                                        <h2 class="slide-title">{{ config('app.name') }}</h2>
-                                        <h4 class="slide-desc">Healthy Life with Ashia</h4>
-                                        {{-- <h2 class="slide-title">{{$sl->banner_title}}</h2>
-                                        <h4 class="slide-desc">{{$sl->banner_subtitle}}</h4> --}}
+                                        <h2 class="slide-title">{{$slider->banner_title}}</h2>
+                                        <h4 class="slide-desc">{{$slider->banner_subtitle}}</h4> 
                                     </div>
                                 </div>
                             </div>
@@ -30,47 +28,13 @@
                     </div>
                 </div>
                 <!-- single slider item start -->
-
-                <!-- single slider item start -->
-                <div class="hero-single-slide hero-overlay">
-                    <div class="hero-slider-item bg-img" data-bg="{{asset('web/img/slider/home1-slide4.jpg')}}" width="1350">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="hero-slider-content slide-1">
-                                        <h2 class="slide-title">Ashia MLM</h2>
-                                        <h4 class="slide-desc">Healthy Life with Ashia</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- single slider item start -->
-
-                <!-- single slider item start -->
-                <div class="hero-single-slide hero-overlay">
-                    <div class="hero-slider-item bg-img" data-bg="{{asset('web/img/slider/home1-slide2.jpg')}}" width="1350">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="hero-slider-content slide-1">
-                                        <h2 class="slide-title">Ashia MLM</h2>
-                                        <h4 class="slide-desc">Healthy Life with Ashia</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- single slider item start -->
-                {{-- @endforeach --}}
+                @endforeach
             </div>
         </section>
-        {{-- @endif --}}
+        @endif
         <!-- hero slider area end -->
 
-        {{-- @if(isset($product) && !empty($product)) --}}
+        @if(isset($products) && !empty($products))
         <!-- product area start -->
         <section class="product-area section-padding">
             <div class="container">
@@ -92,13 +56,13 @@
                             <div class="tab-content">
                                 <div class="tab-pane fade show active" id="tab1">
                                     <div class="product-carousel-4 slick-row-10 slick-arrow-style">
-                                        {{-- @foreach ($product as $pr) --}}
+                                        @foreach ($products as $product)
                                         <!-- product item start -->
                                         <div class="product-item">
                                             <figure class="product-thumb">
                                                 <a href="">
-                                                    <img class="pri-img" src="{{asset('web/img/product/1.jpeg')}}" alt="product">
-                                                    <img class="sec-img" src="{{asset('web/img/product/1.jpeg')}}" alt="product">
+                                                    <img class="pri-img" src="{{asset('admin/photo/'.$product->main_image)}}" alt="product">
+                                                    <img class="sec-img" src="{{asset('admin/photo/'.$product->main_image)}}" alt="product">
                                                 </a>
                                                 <div class="product-badge">
                                                     <div class="product-label new">
@@ -111,16 +75,16 @@
                                             </figure>
                                             <div class="product-caption text-center">
                                                 <h6 class="product-name">
-                                                    <a href="">Product Name</a>
+                                                    <a href="">{{ $product->name }}</a>
                                                 </h6>
                                                 <div class="price-box">
-                                                    <span class="price-old"><del>₹1499</del></span>
-                                                    <span class="price-regular">₹1299</span>
+                                                    <span class="price-old"><del>₹{{ number_format($product->mrp, 2) }}</del></span>
+                                                    <span class="price-regular">₹{{ number_format($product->price, 2) }}</span>
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- product item end -->
-                                        {{-- @endforeach --}}
+                                        @endforeach
                                         <!-- product item end --> 
                                     </div>
                                 </div>
@@ -132,7 +96,7 @@
             </div>
         </section>
         <!-- product area end -->
-        {{-- @endif --}}
+        @endif
     
         <!-- about us area start -->
         <section class="about-us section-padding">
@@ -156,59 +120,6 @@
             </div>
         </section>
         <!-- about us area end -->
-
-        {{-- <!-- service policy area start -->
-        <div class="service-policy section-padding">
-            <div class="container">
-                <div class="row mtn-30">
-                    <div class="col-sm-6 col-lg-3">
-                        <div class="policy-item">
-                            <div class="policy-icon">
-                                <i class="pe-7s-plane"></i>
-                            </div>
-                            <div class="policy-content">
-                                <h6>Free Shipping</h6>
-                                <p>Free shipping all order</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-3">
-                        <div class="policy-item">
-                            <div class="policy-icon">
-                                <i class="pe-7s-help2"></i>
-                            </div>
-                            <div class="policy-content">
-                                <h6>Support 24/7</h6>
-                                <p>Support 24 hours a day</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-3">
-                        <div class="policy-item">
-                            <div class="policy-icon">
-                                <i class="pe-7s-back"></i>
-                            </div>
-                            <div class="policy-content">
-                                <h6>Money Return</h6>
-                                <p>30 days for free return</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-3">
-                        <div class="policy-item">
-                            <div class="policy-icon">
-                                <i class="pe-7s-credit"></i>
-                            </div>
-                            <div class="policy-content">
-                                <h6>100% Payment Secure</h6>
-                                <p>We ensure secure payment</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- service policy area end --> --}}
     </main>
 @endsection
 
