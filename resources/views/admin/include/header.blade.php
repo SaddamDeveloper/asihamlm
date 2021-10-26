@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="images/favicon.ico" type="image/ico" />
 
-    <title>TAMBOLA</title>
+    <title>Asiha MLM | Admin Dashboard</title>
     {{-- <link rel="icon" href="{{ asset('logo/logo.png')}}" type="image/icon type"> --}}
 
 
@@ -48,6 +48,7 @@
 
     <!-- Custom Theme Style -->
     <link href="{{asset('admin/build/css/custom.min.css')}}" rel="stylesheet">
+    @yield('link')
   </head>
 
   <body class="nav-md">
@@ -57,7 +58,7 @@
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
               <a href="{{route('admin.deshboard')}}" class="site_title">
-                TAMBOLA
+                Asiha MLM
                 {{-- <img src="{{ asset('logo/logo.png')}}" height="50" style=" width: 50%;"> --}}
               </a>
             </div>
@@ -70,7 +71,7 @@
                 <img src="images/img.jpg" alt="..." class="img-circle profile_img">
               </div> --}}
               <div class="profile_info">
-                <span>Welcome,<b>Admin</b></span>
+                <span>Welcome, <b>{{ Auth::guard('admin')->user()->name }}</b></span>
                 
               </div>
             </div>
@@ -84,6 +85,38 @@
                 <h3>General</h3>
                 <ul class="nav side-menu">
                   <li><a href="{{ route('admin.deshboard')}}"><i class="fa fa-home"></i> Home </span></a>
+                  </li>
+                  <li><a><i class="fa fa-users" aria-hidden="true"></i> Members<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{route('admin.members')}}">Member List</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-globe"></i> Website Manage <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{route('admin.shopping_slider')}}">Slider List</a></li>
+                      <li><a href="{{route('admin.shopping_product')}}">Product List</a></li>
+                      <li><a href="{{route('admin.gallery')}}">Gallery List</a></li>
+                      <li><a href="{{route('admin.video_gallery')}}">Video Gallery List</a></li>
+                      <li><a href="{{route('admin.legal')}}">Legal Docs List</a></li>
+                      <li><a href="{{route('admin.info')}}">Frontend Info</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="{{ route('admin.orders')}}"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Orders </span></a>
+                  </li>
+                  <li><a href="{{ route('admin.withdraw')}}"><i class="fa fa-money" aria-hidden="true"></i> Withdraw </span></a>
+                  </li>
+                  <li><a><i class="fa fa-edit"></i> Member Product <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{route('admin.product')}}">Product List</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-gear"></i> Configuration <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{route('admin.commission')}}">Commission</a></li>
+                      <li><a href="{{route('admin.fund')}}">Add Fund</a></li>
+                      <li><a href="{{route('admin.pair_timing')}}">Pair timing</a></li>
+                      {{-- <li><a href="{{route('admin.pair_cutoff')}}">Common Pair CutOFF</a></li> --}}
+                    </ul>
                   </li>
                   <li><a href="{{route('admin.change_password_form')}}"><i class="fa fa-key" aria-hidden="true"></i>Change Password</a></li>
 

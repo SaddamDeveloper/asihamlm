@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Frontend;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +15,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        View::composer('web.include.header', function($view){
+            $frontend = Frontend::first();
+            $view->with('frontend', $frontend);
+        });
+        View::composer('web.include.footer', function($view){
+            $frontend = Frontend::first();
+            $view->with('frontend', $frontend);
+        });
     }
 
     /**
